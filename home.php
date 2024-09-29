@@ -82,7 +82,7 @@ $notify_count = User::CountNotification($user_id);
 
     <div class="wrapper-left">
       <div class="sidebar-left">
-        <div class="grid-sidebar" style="margin-top: 40px; border: 1px solid red" >
+        <div class="grid-sidebar" style="margin-top: 40px;" >
           <div class="icon-sidebar-align">
             <img src="<?php echo BASE_URL . "/assets/images/twitter-logo.png"; ?>" alt="" height="50px" width="50px"  />
           </div>
