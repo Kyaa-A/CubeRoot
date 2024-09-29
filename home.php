@@ -186,7 +186,7 @@ $notify_count = User::CountNotification($user_id);
     </div>
 
 <!-- CENTER -->
-    <div class="grid-posts" >
+    <div class="grid-posts">
       <div class="border-right">
         <div class="grid-toolbar-center">
           <div class="center-input-search">

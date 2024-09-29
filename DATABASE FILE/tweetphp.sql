@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2022 at 04:25 PM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- Generation Time: Sep 29, 2024 at 09:21 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -28,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
-  `comment` varchar(140) COLLATE utf16_unicode_ci NOT NULL,
+  `comment` varchar(140) NOT NULL,
   `user_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
   `time` datetime NOT NULL
@@ -41,7 +42,8 @@ CREATE TABLE `comments` (
 INSERT INTO `comments` (`id`, `comment`, `user_id`, `post_id`, `time`) VALUES
 (44, 'This is GREAT', 25, 574, '2021-05-01 02:21:10'),
 (45, 'This is great!', 59, 730, '2022-01-13 12:21:18'),
-(46, 'here\'s a comment', 59, 735, '2022-01-13 12:28:10');
+(46, 'here\'s a comment', 59, 735, '2022-01-13 12:28:10'),
+(47, 'wow', 61, 573, '2024-09-26 17:30:47');
 
 -- --------------------------------------------------------
 
@@ -130,7 +132,14 @@ INSERT INTO `follow` (`id`, `follower_id`, `following_id`, `time`) VALUES
 (185, 60, 41, '2022-01-13 09:20:43'),
 (186, 60, 5, '2022-01-13 09:20:47'),
 (187, 59, 60, '2022-01-13 12:23:12'),
-(188, 60, 59, '2022-01-13 12:26:08');
+(188, 60, 59, '2022-01-13 12:26:08'),
+(189, 61, 2, '2024-09-26 17:22:28'),
+(191, 61, 60, '2024-09-26 17:32:28'),
+(192, 61, 5, '2024-09-26 17:32:29'),
+(197, 61, 43, '2024-09-28 13:06:56'),
+(198, 61, 55, '2024-09-28 13:06:57'),
+(199, 61, 56, '2024-09-28 13:06:57'),
+(202, 62, 2, '2024-09-29 10:20:29');
 
 -- --------------------------------------------------------
 
@@ -235,7 +244,8 @@ INSERT INTO `likes` (`id`, `user_id`, `post_id`) VALUES
 (313, 60, 574),
 (314, 60, 733),
 (315, 59, 735),
-(316, 59, 734);
+(316, 59, 734),
+(319, 61, 573);
 
 -- --------------------------------------------------------
 
@@ -248,7 +258,7 @@ CREATE TABLE `notifications` (
   `notify_for` int(11) NOT NULL,
   `notify_from` int(11) NOT NULL,
   `target` int(11) NOT NULL,
-  `type` enum('follow','like','retweet','qoute','comment','reply','mention') COLLATE utf16_unicode_ci NOT NULL,
+  `type` enum('follow','like','retweet','qoute','comment','reply','mention') NOT NULL,
   `time` datetime NOT NULL,
   `count` int(11) NOT NULL,
   `status` int(11) NOT NULL
@@ -419,7 +429,16 @@ INSERT INTO `notifications` (`id`, `notify_for`, `notify_from`, `target`, `type`
 (226, 59, 60, 735, 'qoute', '2022-01-13 12:26:35', 1, 0),
 (227, 60, 59, 735, 'like', '2022-01-13 12:27:20', 0, 0),
 (228, 60, 59, 734, 'like', '2022-01-13 12:27:26', 0, 0),
-(229, 60, 59, 735, 'comment', '2022-01-13 12:28:10', 0, 0);
+(229, 60, 59, 735, 'comment', '2022-01-13 12:28:10', 0, 0),
+(230, 2, 61, 0, 'follow', '2024-09-26 17:22:28', 0, 0),
+(233, 2, 61, 573, 'comment', '2024-09-26 17:30:47', 0, 0),
+(235, 60, 61, 0, 'follow', '2024-09-26 17:32:28', 0, 0),
+(236, 5, 61, 0, 'follow', '2024-09-26 17:32:29', 0, 0),
+(244, 43, 61, 0, 'follow', '2024-09-28 13:06:56', 0, 0),
+(245, 55, 61, 0, 'follow', '2024-09-28 13:06:57', 0, 0),
+(246, 56, 61, 0, 'follow', '2024-09-28 13:06:57', 0, 0),
+(249, 2, 61, 573, 'like', '2024-09-28 13:22:46', 0, 0),
+(250, 2, 62, 0, 'follow', '2024-09-29 10:20:29', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -452,7 +471,10 @@ INSERT INTO `posts` (`id`, `user_id`, `post_on`) VALUES
 (732, 59, '2022-01-13 12:22:25'),
 (733, 59, '2022-01-13 12:24:26'),
 (734, 60, '2022-01-13 12:25:53'),
-(735, 60, '2022-01-13 12:26:35');
+(735, 60, '2022-01-13 12:26:35'),
+(738, 61, '2024-09-27 09:32:02'),
+(740, 61, '2024-09-28 17:24:08'),
+(744, 61, '2024-09-28 20:09:08');
 
 -- --------------------------------------------------------
 
@@ -464,7 +486,7 @@ CREATE TABLE `replies` (
   `id` int(11) NOT NULL,
   `comment_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `reply` varchar(140) COLLATE utf16_unicode_ci NOT NULL,
+  `reply` varchar(140) NOT NULL,
   `time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
 
@@ -483,7 +505,7 @@ INSERT INTO `replies` (`id`, `comment_id`, `user_id`, `reply`, `time`) VALUES
 
 CREATE TABLE `retweets` (
   `post_id` int(11) NOT NULL,
-  `retweet_msg` varchar(140) COLLATE utf16_unicode_ci DEFAULT NULL,
+  `retweet_msg` varchar(140) DEFAULT NULL,
   `tweet_id` int(11) DEFAULT NULL,
   `retweet_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
@@ -504,7 +526,7 @@ INSERT INTO `retweets` (`post_id`, `retweet_msg`, `tweet_id`, `retweet_id`) VALU
 
 CREATE TABLE `trends` (
   `id` int(11) NOT NULL,
-  `hashtag` varchar(140) COLLATE utf16_unicode_ci NOT NULL,
+  `hashtag` varchar(140) NOT NULL,
   `created_on` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
 
@@ -521,7 +543,8 @@ INSERT INTO `trends` (`id`, `hashtag`, `created_on`) VALUES
 (12, 'bro', '2021-04-02 03:31:38'),
 (13, 'mysql', '2022-01-13 16:10:54'),
 (14, 'explore', '2022-01-13 16:10:54'),
-(15, 'fun', '2022-01-13 16:10:54');
+(15, 'fun', '2022-01-13 16:10:54'),
+(16, '039', '2024-09-29 01:07:00');
 
 -- --------------------------------------------------------
 
@@ -531,8 +554,8 @@ INSERT INTO `trends` (`id`, `hashtag`, `created_on`) VALUES
 
 CREATE TABLE `tweets` (
   `post_id` int(11) NOT NULL,
-  `status` varchar(140) COLLATE utf16_unicode_ci DEFAULT NULL,
-  `img` text COLLATE utf16_unicode_ci
+  `status` varchar(140) DEFAULT NULL,
+  `img` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
 
 --
@@ -552,7 +575,10 @@ INSERT INTO `tweets` (`post_id`, `status`, `img`) VALUES
 (731, '', 'tweet-61dfd3ee910a8.png'),
 (732, 'This is a second demo tweet with mention too! @ralph @wilburpotter @codeastro', NULL),
 (733, 'A post with Sample Image.', 'tweet-61dffddac3a4c.jpg'),
-(734, 'Here\'s a tweet with hashtags. #php #mysql #js #explore #fun', NULL);
+(734, 'Here\'s a tweet with hashtags. #php #mysql #js #explore #fun', NULL),
+(738, 'Hey there!', NULL),
+(740, 'I’m still coding in the evening at 10:10 PM in the Philippines, and I’m so tired.', 'tweet-66f8118887813.jpg'),
+(744, 'Its already 2 AM, and Im wondering when Ill fix these bugs.', 'tweet-66f83834ec8e9.jpg');
 
 -- --------------------------------------------------------
 
@@ -562,15 +588,15 @@ INSERT INTO `tweets` (`post_id`, `status`, `img`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `username` varchar(40) COLLATE utf16_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf16_unicode_ci NOT NULL,
-  `password` varchar(32) COLLATE utf16_unicode_ci NOT NULL,
-  `name` varchar(40) COLLATE utf16_unicode_ci NOT NULL,
-  `img` varchar(255) COLLATE utf16_unicode_ci NOT NULL DEFAULT 'default.jpg',
-  `imgCover` varchar(255) COLLATE utf16_unicode_ci NOT NULL DEFAULT 'cover.png',
-  `bio` varchar(140) COLLATE utf16_unicode_ci NOT NULL DEFAULT '',
-  `location` varchar(255) COLLATE utf16_unicode_ci NOT NULL DEFAULT '',
-  `website` varchar(255) COLLATE utf16_unicode_ci NOT NULL DEFAULT ''
+  `username` varchar(40) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `name` varchar(40) NOT NULL,
+  `img` varchar(255) NOT NULL DEFAULT 'default.jpg',
+  `imgCover` varchar(255) NOT NULL DEFAULT 'cover.png',
+  `bio` varchar(140) NOT NULL DEFAULT '',
+  `location` varchar(255) NOT NULL DEFAULT '',
+  `website` varchar(255) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
 
 --
@@ -596,7 +622,9 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `name`, `img`, `imgC
 (57, 'johnst', 'john@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'John Stuart', 'default.jpg', 'cover.png', 'Not like the rest of them', '', ''),
 (58, 'ralph', 'ralph5@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Ralph Garza', 'user-61dda8817afe8.png', 'cover.png', 'In a world of worriers, be the warrior', '', ''),
 (59, 'testacc', 'test@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'Test Account', 'user-61def0bcc0f0d.jpg', 'cover.png', 'I practice what I post!', 'New Jersey', 'https://testwebsite.com/'),
-(60, 'marctaylor', 'marc@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'Marc Taylor', 'user-61dfd28bd6e79.png', 'cover.png', 'Coffee in one hand, confidence in another.', 'Lake Isaiah', '');
+(60, 'marctaylor', 'marc@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'Marc Taylor', 'user-61dfd28bd6e79.png', 'cover.png', 'Coffee in one hand, confidence in another.', 'Lake Isaiah', ''),
+(61, 'Asnari', 'asnaripacalna@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Asnari Pacalna', 'user-66f56fdb685d9.jpg', 'user-66f80a23be4c1.jpg', '', '', 'https://github.com/Kyaa-A'),
+(62, 'admin', 'admin@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Admin', 'default.jpg', 'cover.png', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -684,42 +712,50 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
 --
 -- AUTO_INCREMENT for table `follow`
 --
 ALTER TABLE `follow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=189;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
+
 --
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=317;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=322;
+
 --
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=230;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=251;
+
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=736;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=745;
+
 --
 -- AUTO_INCREMENT for table `replies`
 --
 ALTER TABLE `replies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT for table `trends`
 --
 ALTER TABLE `trends`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+
 --
 -- Constraints for dumped tables
 --
@@ -778,6 +814,7 @@ ALTER TABLE `retweets`
 --
 ALTER TABLE `tweets`
   ADD CONSTRAINT `tweets_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
