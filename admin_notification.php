@@ -1,21 +1,22 @@
 <?php
-
 include 'core/init.php';
+include 'handle/handleNotifications.php';
 
 $user_id = $_SESSION['user_id'];
-
 $user = User::getData($user_id);
+$who_users = Follow::whoToFollow($user_id);
 
+// update notification count
+User::updateNotifications($user_id);
+
+$notify_count = User::CountNotification($user_id);
+$notofication = User::notification($user_id);
+// var_dump($notofication);
+// die();
 if (User::checkLogIn() === false)
   header('location: index.php');
 
-
-$tweets = Tweet::tweets($user_id);
-$who_users = Follow::whoToFollow($user_id);
-$notify_count = User::CountNotification($user_id);
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,66 +24,24 @@ $notify_count = User::CountNotification($user_id);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | TwitterClone</title>
-
-  <link rel="shortcut icon" type="image/png" href="assets/images/twitter.svg">
+  <title>Notifications | TwitterClone</title>
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/all.min.css">
-  <link rel="stylesheet" href="assets/css/home_style.css?v=<?php echo time(); ?>">
+  <link rel="stylesheet" href="assets/css/profile_style.css?v=<?php echo time(); ?>">
 
+  <link rel="shortcut icon" type="image/png" href="assets/images/twitter.svg">
 
 </head>
 
 <body>
-  <!-- This is a modal for welcome the new signup account! -->
 
   <script src="assets/js/jquery-3.5.1.min.js"></script>
 
-  <?php if (isset($_SESSION['welcome'])) { ?>
-    <script>
-      $(document).ready(function() {
-        // Open modal on page load
-        $("#welcome").modal('show');
-
-
-      });
-    </script>
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="welcome" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="">
-            <div class="text-center">
-              <span class="modal-title font-weight-bold text-center" id="exampleModalLongTitle">
-                <span style="font-size: 20px;">Welcome <span style="color:#207ce5"><?php echo $user->name; ?></span> </span>
-              </span>
-            </div>
-            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button> -->
-          </div>
-          <div class="modal-body">
-            <div class="text-center">
-              <h4 style="font-weight: 600; ">You've Signed up Successfully!</h4>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-  <?php unset($_SESSION['welcome']);
-  } ?>
-
-  <!-- End welcome -->
 
   <div id="mine">
-
     <div class="wrapper-left">
       <div class="sidebar-left">
-        <div class="grid-sidebar" style="margin-top: 40px;">
+        <div class="grid-sidebar" style="margin-top: 40px">
           <div class="icon-sidebar-align">
             <img src="<?php echo BASE_URL . "/assets/images/twitter-logo.png"; ?>" alt="" height="50px" width="50px" />
           </div>
@@ -94,7 +53,7 @@ $notify_count = User::CountNotification($user_id);
               <img src="<?php echo BASE_URL . "/includes/icons/tweethome.png"; ?>" alt="" height="26.25px" width="26.25px" />
             </div>
             <div class="wrapper-left-elements">
-              <a class="wrapper-left-active" href="admin_dashboard.php" style="margin-top: 4px;"><strong>Home</strong></a>
+              <a href="admin_dashboard.php" style="margin-top: 4px;"><strong>Home</strong></a>
             </div>
           </div>
         </a>
@@ -113,7 +72,7 @@ $notify_count = User::CountNotification($user_id);
             </div>
 
             <div class="wrapper-left-elements">
-              <a href="admin_notification.php" style="margin-top: 4px"><strong>Notifications</strong></a>
+              <a class="wrapper-left-active" href="admin_notification.php" style="margin-top: 4px"><strong>Notifications</strong></a>
             </div>
           </div>
         </a>
@@ -137,7 +96,7 @@ $notify_count = User::CountNotification($user_id);
           </div>
         </a>
 
-        <a href="<?php echo BASE_URL . "$user->username"; ?>">
+        <a href="<?php echo BASE_URL . $user->username; ?>">
           <div class="grid-sidebar" style="margin-top: 30px;">
             <div class="icon-sidebar-align">
               <img src="<?php echo BASE_URL . "/includes/icons/tweetprof.png"; ?>" alt="" height="26.25px" width="26.25px" />
@@ -177,7 +136,6 @@ $notify_count = User::CountNotification($user_id);
         <button class="button-twittear" style="margin-top: 25px;">
           <strong>Tweet</strong>
         </button>
-
         <!-- PROFILE DOWN -->
         <!-- <div class="box-user">
           <div class="grid-user">
@@ -205,108 +163,42 @@ $notify_count = User::CountNotification($user_id);
       </div>
     </div>
 
-    <!-- CENTER -->
+
+
     <div class="grid-posts">
       <div class="border-right">
         <div class="grid-toolbar-center">
           <div class="center-input-search">
-            <div class="input-group-login" id="whathappen">
 
-              <div class="container" style="padding: 0;">
-                <div class="part-1" style="width:112.8%;">
-                  <div class="header">
-                    <div class="home">
-                      <h2>Home</h2>
-                    </div>
-                    <!-- <div class="icon">
-                        <button type="button" name="button">+</button>
-                      </div> -->
-                  </div>
-
-                  <div class="text">
-                    <form class="" action="handle/handleTweet.php" method="post" enctype="multipart/form-data">
-                      <div class="inner">
-
-                        <img src="assets/images/users/<?php echo $user->img ?>" alt="profile photo" style="width: 65px; height: 50px">
-
-                        <label>
-
-                          <textarea class="text-whathappen" name="status" rows="8" cols="80" placeholder="What's happening?!"></textarea>
-
-                        </label>
-                      </div>
-
-                      <!-- tmp image upload place -->
-                      <div class="position-relative upload-photo">
-                        <img class="img-upload-tmp" src="assets/images/tweets/tweet-60666d6b426a1.jpg" alt="">
-                        <div class="icon-bg">
-                          <i id="#upload-delete-tmp" class="fas fa-times position-absolute upload-delete"></i>
-
-                        </div>
-                      </div>
-
-
-                      <div class="bottom">
-
-                        <div class="bottom-container">
-
-
-
-
-                          <label for="tweet_img" class="ml-3 mb-2 uni">
-
-                            <i class="fa fa-image item1-pair"></i>
-                          </label>
-                          <input class="tweet_img" id="tweet_img" type="file" name="tweet_img">
-
-                        </div>
-                        <div class="hash-box">
-
-                          <ul style="margin-bottom: 0;">
-
-
-                          </ul>
-
-                        </div>
-                        <?php if (isset($_SESSION['errors_tweet'])) {
-
-                          foreach ($_SESSION['errors_tweet'] as $t) { ?>
-
-                            <div class="alert alert-danger">
-                              <span class="item2-pair"> <?php echo $t; ?> </span>
-                            </div>
-
-                        <?php }
-                        }
-                        unset($_SESSION['errors_tweet']); ?>
-                        <div>
-
-                          <span class="bioCount" id="count">140</span>
-                          <input id="tweet-input" type="submit" name="tweet" value="Tweet" class="submit">
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-                <div class="part-2">
-
-                </div>
-
-              </div>
-
-
-            </div>
           </div>
-          <!-- <div class="mt-icon-settings">
-              <img src="https://i.ibb.co/W5T9ycN/settings.png" alt="" />
-            </div> -->
+
         </div>
+
         <div class="box-fixed" id="box-fixed"></div>
 
-        <?php include 'includes/tweets.php'; ?>
+        <div class="box-home feed">
+          <div class="container">
+            <div style="border-bottom: 1px solid #F5F8FA;" class="row position-fixed box-name">
+              <div class="col-xs-2">
+                <a href="javascript: history.go(-1);"> <i style="font-size:20px;" class="fas fa-arrow-left arrow-style"></i> </a>
+              </div>
+              <div class="col-xs-10">
+                <p style="margin-top: 12px;" class="home-name"> Notifications</p>
+              </div>
+            </div>
 
+          </div>
+          <div class="container mt-5" style="border: 1px solid red; min-height: 532px; width: 90%; margin-left: 58px">
+            <h1>test</h1>
+
+            
+
+          </div>
+
+
+
+        </div>
       </div>
-
 
       <div class="wrapper-right">
         <div style="width: 90%;" class="container">
@@ -321,8 +213,6 @@ $notify_count = User::CountNotification($user_id);
             </div>
           </div>
         </div>
-
-
 
 
 
@@ -373,23 +263,29 @@ $notify_count = User::CountNotification($user_id);
 
         </div>
 
-
       </div>
     </div>
   </div>
+
   <script src="assets/js/search.js"></script>
-  <script src="assets/js/photo.js?v=<?php echo time(); ?>"></script>
+  <script src="assets/js/photo.js"></script>
+  <script src="assets/js/follow.js?v=<?php echo time(); ?>"></script>
+  <script src="assets/js/users.js?v=<?php echo time(); ?>"></script>
   <script type="text/javascript" src="assets/js/hashtag.js"></script>
   <script type="text/javascript" src="assets/js/like.js"></script>
   <script type="text/javascript" src="assets/js/comment.js?v=<?php echo time(); ?>"></script>
   <script type="text/javascript" src="assets/js/retweet.js?v=<?php echo time(); ?>"></script>
-  <script type="text/javascript" src="assets/js/follow.js?v=<?php echo time(); ?>"></script>
   <script src="https://kit.fontawesome.com/38e12cc51b.js" crossorigin="anonymous"></script>
   <!-- <script src="assets/js/jquery-3.4.1.slim.min.js"></script> -->
   <script src="assets/js/jquery-3.5.1.min.js"></script>
-
   <script src="assets/js/popper.min.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>
 </body>
+
+<style>
+  .container {
+    padding-left: 55px;
+  }
+</style>
 
 </html>
