@@ -31,6 +31,32 @@ if (User::checkLogIn() === false)
 
     <link rel="shortcut icon" type="image/png" href="assets/images/twitter.svg">
 
+    <style>
+        .slider {
+            width: 800px;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: absolute;
+            left: 10%;
+        }
+
+        .slides {
+            width: 500%;
+            height: 500px;
+            display: flex;
+        }
+
+        .slides input {
+            display: none;
+        }
+
+        .slide {
+            width: 20%;
+            transition: 3s;
+            background-color: #fff;
+        }
+    </style>
 </head>
 
 <body>
@@ -189,10 +215,71 @@ if (User::checkLogIn() === false)
 
                     </div>
                     <div class="container mt-5" style="border: 1px solid red; min-height: 532px; width: 90%; margin-left: 58px">
-                        <h1>test</h1>
 
+                        <!-- SLIDER -->
+                        <!-- <div class="slider">
+                            <div class="slides">
+                                <div class="slide first">
+                                    <div class="header">List of User</div>
+                                    <div class="container">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Edit</th>
+                                                    <th>Delete</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
 
+                                            <tbody>
+                                                <?php
 
+                                                $sql = "SELECT * FROM users";
+                                                $result = $conn->query($sql);
+
+                                                if ($result->num_rows > 0) {
+                                                    while ($row = $result->fetch_assoc()) {
+
+                                                        $stud_id = $row['stud_id'];
+                                                ?>
+                                                        <tr>
+                                                            <td>
+                                                                <?php echo $stud_id; ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $row['stud_name']; ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $row['email']; ?>
+                                                            </td>
+                                                            <td>
+                                                                <a href="edit_page.php?id=<?php echo $stud_id; ?>">
+                                                                    <button type="button" class="icon">Edit</button>
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                <form method="POST" enctype="multipart/form-data"
+                                                                    action="delete_function.php?id=<?php echo $stud_id; ?>">
+                                                                    <button type="submit" name="delete" class="icon">Delete</button>
+                                                                </form>
+                                                            </td>
+                                                            <td><span class="status official">Active</span></td>
+                                                        </tr>
+                                                <?php
+                                                    }
+                                                } else {
+                                                    echo "No users found.";
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
                     </div>
 
 
