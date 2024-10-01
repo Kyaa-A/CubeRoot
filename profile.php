@@ -48,7 +48,7 @@ if (isset($_GET['username']) === true && empty($_GET['username']) === false) {
       <div class="sidebar-left">
         <div class="grid-sidebar" style="margin-top: 40px">
           <div class="icon-sidebar-align">
-            <img src="<?php echo BASE_URL . "/assets/images/twitter-logo.png"; ?>" alt="" height="50px" width="50px" />
+            <img src="<?php echo BASE_URL . "/assets/images/twitterlogo.png"; ?>" alt="" height="50px" width="50px" />
           </div>
         </div>
 

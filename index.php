@@ -11,7 +11,7 @@
 
   <html>
     <head>
-      <title>TwitterClone</title>
+      <title>CubeRoot</title>
       <meta charset="UTF-8" />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css"/>
           <!-- <link rel="stylesheet" href="assets/css/style-complete.css"/> -->
@@ -19,14 +19,14 @@
           <link rel="stylesheet" href="assets/css/bootstrap.min.css">
           <link rel="stylesheet" href="assets/css/all.min.css">
 
-      <link rel="shortcut icon" type="image/png" href="assets/images/twitter.svg"> 
+      <link rel="shortcut icon" type="image/png" href="assets/images/twitterlogo.png"> 
     </head>
   <body>
   <main class="twt-main">
               <section class="twt-login">
                   <?php include 'includes/login.php';  ?>
                       <div class="slow-login">
-                          <img class="login-bird" src="<?php echo BASE_URL . "/assets/images/twitter-logo.png"; ?>" alt="bird">
+                          <img class="login-bird" src="<?php echo BASE_URL . "/assets/images/twitterlogo.png"; ?>" alt="bird">
                           <button class="login-small-display signin-btn pri-btn">Log in</button>
                           <span class="front-para">See what’s happening in the world right now</span>
                           <span class="join">Join Twitter Clone Today.</span>
