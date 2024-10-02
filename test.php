@@ -1,3 +1,5 @@
+<!-- admin panel -->
+
 <?php
 include 'core/init.php';
 include 'handle/handleNotifications.php';
@@ -24,7 +26,7 @@ if (User::checkLogIn() === false)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel | CubeLink</title>
+    <title>Admin Panel |  CubeLink</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/all.min.css">
     <link rel="stylesheet" href="assets/css/profile_style.css?v=<?php echo time(); ?>">
@@ -32,7 +34,30 @@ if (User::checkLogIn() === false)
     <link rel="shortcut icon" type="image/png" href="assets/images/twitterlogo.png">
 
     <style>
+        .slider {
+            width: 800px;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: absolute;
+            left: 10%;
+        }
 
+        .slides {
+            width: 500%;
+            height: 500px;
+            display: flex;
+        }
+
+        .slides input {
+            display: none;
+        }
+
+        .slide {
+            width: 20%;
+            transition: 3s;
+            background-color: #fff;
+        }
     </style>
 </head>
 
@@ -62,7 +87,7 @@ if (User::checkLogIn() === false)
                 </a>
 
                 <a href="admin_notification.php">
-                    <div class="grid-sidebar" style="margin-top: 30px;">
+                    <div class="grid-sidebar" style="margin-top: 30px">
                         <div class="icon-sidebar-align position-relative">
                             <?php if ($notify_count > 0) { ?>
                                 <i class="notify-count"><?php echo $notify_count; ?></i>
@@ -191,80 +216,144 @@ if (User::checkLogIn() === false)
                         </div>
 
                     </div>
-                    <div class="container mt-5" style="border: 1px solid red; min-height: 532px; width: 100%; margin-left: 58px">
+                    <div class="container mt-5" style="border: 1px solid red; min-height: 532px; width: 90%; margin-left: 58px">
 
+                        <!-- SLIDER -->
+                        <!-- <div class="slider">
+                            <div class="slides">
+                                <div class="slide first">
+                                    <div class="header">List of User</div>
+                                    <div class="container">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Edit</th>
+                                                    <th>Delete</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
 
-                        <!-- END -->
+                                            <tbody>
+                                                <?php
+
+                                                $sql = "SELECT * FROM users";
+                                                $result = $conn->query($sql);
+
+                                                if ($result->num_rows > 0) {
+                                                    while ($row = $result->fetch_assoc()) {
+
+                                                        $stud_id = $row['stud_id'];
+                                                ?>
+                                                        <tr>
+                                                            <td>
+                                                                <?php echo $stud_id; ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $row['stud_name']; ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $row['email']; ?>
+                                                            </td>
+                                                            <td>
+                                                                <a href="edit_page.php?id=<?php echo $stud_id; ?>">
+                                                                    <button type="button" class="icon">Edit</button>
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                <form method="POST" enctype="multipart/form-data"
+                                                                    action="delete_function.php?id=<?php echo $stud_id; ?>">
+                                                                    <button type="submit" name="delete" class="icon">Delete</button>
+                                                                </form>
+                                                            </td>
+                                                            <td><span class="status official">Active</span></td>
+                                                        </tr>
+                                                <?php
+                                                    }
+                                                } else {
+                                                    echo "No users found.";
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
                     </div>
 
-                </div>
-
-            </div>
-        </div>
-
-        <div class="wrapper-right">
-            <div style="width: 90%;" class="container">
-
-                <div class="input-group py-2 m-auto pr-5 position-relative">
-                    <i id="icon-search" class="fas fa-search tryy"></i>
-                    <input type="text" class="form-control search-input" placeholder="Search Twitter">
-                    <div class="search-result">
 
 
-                    </div>
                 </div>
             </div>
 
+            <div class="wrapper-right">
+                <div style="width: 90%;" class="container">
 
-            <div class="box-share">
-                <p class="txt-share"><strong>Who to follow</strong></p>
-                <?php
-                foreach ($who_users as $user) {
-                    //  $u = User::getData($user->user_id);
-                    $user_follow = Follow::isUserFollow($user_id, $user->id);
-                ?>
-                    <div class="grid-share">
-                        <a style="position: relative; z-index:5; color:black" href="<?php echo $user->username;  ?>">
-                            <img
-                                src="assets/images/users/<?php echo $user->img; ?>"
-                                alt=""
-                                class="img-share" />
-                        </a>
-                        <div>
-                            <p>
-                                <a style="position: relative; z-index:5; color:black" href="<?php echo $user->username;  ?>">
-                                    <strong><?php echo $user->name; ?></strong>
-                                </a>
-                            </p>
-                            <p class="username">@<?php echo $user->username; ?>
-                                <?php if (Follow::FollowsYou($user->id, $user_id)) { ?>
-                                    <span class="ml-1 follows-you">Follows You</span>
-                            </p>
-                        <?php } ?></p>
+                    <div class="input-group py-2 m-auto pr-5 position-relative">
+
+                        <i id="icon-search" class="fas fa-search tryy"></i>
+                        <input type="text" class="form-control search-input" placeholder="Search Twitter">
+                        <div class="search-result">
+
+
                         </div>
-                        <div>
-                            <button class="follow-btn follow-btn-m 
+                    </div>
+                </div>
+
+
+
+                <div class="box-share">
+                    <p class="txt-share"><strong>Who to follow</strong></p>
+                    <?php
+                    foreach ($who_users as $user) {
+                        //  $u = User::getData($user->user_id);
+                        $user_follow = Follow::isUserFollow($user_id, $user->id);
+                    ?>
+                        <div class="grid-share">
+                            <a style="position: relative; z-index:5; color:black" href="<?php echo $user->username;  ?>">
+                                <img
+                                    src="assets/images/users/<?php echo $user->img; ?>"
+                                    alt=""
+                                    class="img-share" />
+                            </a>
+                            <div>
+                                <p>
+                                    <a style="position: relative; z-index:5; color:black" href="<?php echo $user->username;  ?>">
+                                        <strong><?php echo $user->name; ?></strong>
+                                    </a>
+                                </p>
+                                <p class="username">@<?php echo $user->username; ?>
+                                    <?php if (Follow::FollowsYou($user->id, $user_id)) { ?>
+                                        <span class="ml-1 follows-you">Follows You</span>
+                                </p>
+                            <?php } ?></p>
+                            </div>
+                            <div>
+                                <button class="follow-btn follow-btn-m 
                       <?= $user_follow ? 'following' : 'follow' ?>"
-                                data-follow="<?php echo $user->id; ?>"
-                                data-user="<?php echo $user_id; ?>"
-                                data-profile="<?php echo $u_id; ?>"
-                                style="font-weight: 700;">
-                                <?php if ($user_follow) { ?>
-                                    Following
-                                <?php } else {  ?>
-                                    Follow
-                                <?php }  ?>
-                            </button>
+                                    data-follow="<?php echo $user->id; ?>"
+                                    data-user="<?php echo $user_id; ?>"
+                                    data-profile="<?php echo $u_id; ?>"
+                                    style="font-weight: 700;">
+                                    <?php if ($user_follow) { ?>
+                                        Following
+                                    <?php } else {  ?>
+                                        Follow
+                                    <?php }  ?>
+                                </button>
+                            </div>
                         </div>
-                    </div>
 
-                <?php } ?>
+                    <?php } ?>
 
+
+                </div>
 
             </div>
-
         </div>
-    </div>
     </div>
 
     <script src="assets/js/search.js"></script>
