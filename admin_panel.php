@@ -1,7 +1,7 @@
 <?php
 include_once 'core/init.php';
 include_once 'handle/handleNotifications.php';
-include_once 'core/classes/connection.php'; 
+include_once 'core/classes/connection.php';
 
 $user_id = $_SESSION['user_id'];
 $user = User::getData($user_id);
@@ -18,7 +18,6 @@ if (User::checkLogIn() === false)
     header('location: index.php');
 
 $db = Connect::connect(); // Now $db holds the PDO connection object
-
 $stmt = $db->prepare("SELECT id, username, img, email, status FROM users");
 $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -201,11 +200,12 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <main class="table" id="customers_table">
                             <section class="table__header">
                                 <h1>User's Data</h1>
+
                                 <div class="input-group">
                                     <input type="search" placeholder="Search Data...">
-                                    <img src="assets/images/" alt="">
                                 </div>
-                                <div class="export__file">
+                                <!-- EXPORT -->
+                                <!-- <div class="export__file">
                                     <label for="export-file" class="export__file-btn" title="Export File"></label>
                                     <input type="checkbox" id="export-file">
                                     <div class="export__file-options">
@@ -215,7 +215,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         <label for="export-file" id="toCSV">CSV <img src="images/csv.png" alt=""></label>
                                         <label for="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt=""></label>
                                     </div>
-                                </div>
+                                </div> -->
                             </section>
                             <section class="table__body">
                                 <table>
@@ -232,24 +232,26 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <tbody>
                                         <?php foreach ($users as $user): ?>
                                             <tr>
-                                                <td> <?= $user['id']; ?> </td>
+                                                <td><?= $user['id']; ?></td>
                                                 <td>
                                                     <img src="assets/images/<?= $user['img']; ?>" alt="">
                                                     <?= $user['username']; ?>
                                                 </td>
-                                                <td> <?= $user['email']; ?> </td>
-                                                <td> <button>Edit</button></td>
-                                                <td> <button class="delete" data-id="<?= $user['id']; ?>">Delete</button></td>
+                                                <td><?= $user['email']; ?></td>
+                                                <td><button>Edit</button></td>
+                                                <td><button class="delete" data-id="<?= $user['id']; ?>">Delete</button></td>
                                                 <td>
-                                                    <button class="toggle-status" data-id="<?= $user['id']; ?>">
-                                                        <?= ($user['status'] == 1) ? 'Active' : 'Inactive'; ?>
+                                                    <button class="toggle-status" data-id="<?php echo $user['id']; ?>" data-status="<?php echo $user['status']; ?>">
+                                                        <?php echo $user['status'] == 1 ? 'Active' : 'Inactive'; ?>
                                                     </button>
+
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </section>
+
 
                         </main>
                         <script src="script.js"></script>
@@ -277,7 +279,10 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <script src="assets/js/jquery-3.5.1.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/statusToggle.js?v=<?php echo time(); ?>"></script>
+    <script src="statusToggle.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </body>
 
 <style>

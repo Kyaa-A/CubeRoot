@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2024 at 02:57 AM
+-- Generation Time: Oct 04, 2024 at 04:23 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -147,7 +147,8 @@ INSERT INTO `follow` (`id`, `follower_id`, `following_id`, `time`) VALUES
 (209, 62, 61, '2024-10-02 11:01:17'),
 (215, 61, 33, '2024-10-02 11:16:03'),
 (216, 61, 58, '2024-10-02 11:16:05'),
-(217, 61, 41, '2024-10-02 11:16:21');
+(217, 61, 41, '2024-10-02 11:16:21'),
+(218, 1, 2, '2024-10-04 16:54:24');
 
 -- --------------------------------------------------------
 
@@ -455,7 +456,8 @@ INSERT INTO `notifications` (`id`, `notify_for`, `notify_from`, `target`, `type`
 (260, 61, 62, 0, 'follow', '2024-10-02 11:01:17', 1, 0),
 (266, 33, 61, 0, 'follow', '2024-10-02 11:16:03', 0, 0),
 (267, 58, 61, 0, 'follow', '2024-10-02 11:16:05', 0, 0),
-(268, 41, 61, 0, 'follow', '2024-10-02 11:16:21', 0, 0);
+(268, 41, 61, 0, 'follow', '2024-10-02 11:16:21', 0, 0),
+(269, 2, 1, 0, 'follow', '2024-10-04 16:54:24', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -635,9 +637,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `name`, `img`, `imgCover`, `bio`, `location`, `website`, `role`, `status`) VALUES
-(2, 'codeastro', 'astro@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Astro', 'user-61def28fce0d7.jpg', 'cover.png', 'Well, nothing...', 'South Dakota', 'https://codeastro.com/', 1, 1),
-(5, 'matholiver', 'oliver@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Matthew Oliver', 'user-61dee95ac1f87.jpg', 'cover.png', 'I make money in my sleep', '', '', 1, 1),
-(25, 'itselisagrnt', 'elisag@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Elisa Grant', 'user-61deea3b7c7b3.jpg', 'cover.png', 'Midnight snacker', '', '', 1, 1),
+(1, 'kyaa', 'kyaamystera@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Kyaa', 'default.jpg', 'cover.png', '', '', '', 1, 1),
+(2, 'codeastro', 'astro@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Astro', 'user-61def28fce0d7.jpg', 'cover.png', 'Well, nothing...', 'South Dakota', 'https://codeastro.com/', 1, 0),
+(5, 'matholiver', 'oliver@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Matthew Oliver', 'user-61dee95ac1f87.jpg', 'cover.png', 'I make money in my sleep', '', '', 1, 0),
+(25, 'itselisagrnt', 'elisag@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Elisa Grant', 'user-61deea3b7c7b3.jpg', 'cover.png', 'Midnight snacker', '', '', 1, 0),
 (27, 'viodaw', 'dawson@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Viola Dawson', 'default.jpg', 'cover.png', 'Recovering cake addict', '', '', 1, 1),
 (33, 'floreshe', 'sherflore@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Sherman Flores', 'default.jpg', 'cover.png', 'Smart. Strong. Silly. ', '', '', 1, 1),
 (34, 'darlyperez', 'daryl@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Daryl Perez', 'user-61deea7887174.png', 'cover.png', 'Donï¿½t like me? Donï¿½t care.', '', '', 1, 1),
@@ -749,7 +752,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `follow`
 --
 ALTER TABLE `follow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=219;
 
 --
 -- AUTO_INCREMENT for table `likes`
@@ -761,7 +764,7 @@ ALTER TABLE `likes`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=269;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=270;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -785,7 +788,7 @@ ALTER TABLE `trends`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- Constraints for dumped tables
