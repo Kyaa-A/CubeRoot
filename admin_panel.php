@@ -27,13 +27,11 @@ if (User::checkLogIn() === false)
     <title>Admin Panel | CubeLink</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/profile_style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="assets/css/admin_panel.css?v=<?php echo time(); ?>">
 
     <link rel="shortcut icon" type="image/png" href="assets/images/twitterlogo.png">
 
-    <style>
 
-    </style>
 </head>
 
 <body>
@@ -191,9 +189,55 @@ if (User::checkLogIn() === false)
                         </div>
 
                     </div>
-                    <div class="container mt-5" style="border: 1px solid red; min-height: 532px; width: 100%; margin-left: 58px">
-
-
+                    <!-- FIX -->
+                    <div class="container_panel">
+                        <main class="table" id="customers_table">
+                            <section class="table__header">
+                                <h1>User's Data</h1>
+                                <div class="input-group">
+                                    <input type="search" placeholder="Search Data...">
+                                    <img src="assets/images/" alt="">
+                                </div>
+                                <div class="export__file">
+                                    <label for="export-file" class="export__file-btn" title="Export File"></label>
+                                    <input type="checkbox" id="export-file">
+                                    <div class="export__file-options">
+                                        <label>Export As &nbsp; &#10140;</label>
+                                        <label for="export-file" id="toPDF">PDF <img src="images/pdf.png" alt=""></label>
+                                        <label for="export-file" id="toJSON">JSON <img src="images/json.png" alt=""></label>
+                                        <label for="export-file" id="toCSV">CSV <img src="images/csv.png" alt=""></label>
+                                        <label for="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt=""></label>
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="table__body">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th> ID <span class="icon-arrow">&UpArrow;</span></th>
+                                            <th> Name <span class="icon-arrow">&UpArrow;</span></th>
+                                            <th> Email <span class="icon-arrow">&UpArrow;</span></th>
+                                            <th> Edit <span class="icon-arrow">&UpArrow;</span></th>
+                                            <th> Delete <span class="icon-arrow">&UpArrow;</span></th>
+                                            <th> Status <span class="icon-arrow">&UpArrow;</span></th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        <tr>
+                                            <td> 1 </td>
+                                            <td> <img src="images/Zinzu Chan Lee.jpg" alt="">Hehe</td>
+                                            <td> Seoul </td>
+                                            <td> Edit</td>
+                                            <td> Delete</td>
+                                            <td> <strong> <p class="status delivered">Active</p> </strong></td>
+                                        </tr>
+                                    </tbody>
+                                    
+                                </table>
+                            </section>
+                        </main>
+                        <script src="script.js"></script>
                         <!-- END -->
                     </div>
 
@@ -202,68 +246,6 @@ if (User::checkLogIn() === false)
             </div>
         </div>
 
-        <div class="wrapper-right">
-            <div style="width: 90%;" class="container">
-
-                <div class="input-group py-2 m-auto pr-5 position-relative">
-                    <i id="icon-search" class="fas fa-search tryy"></i>
-                    <input type="text" class="form-control search-input" placeholder="Search Twitter">
-                    <div class="search-result">
-
-
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="box-share">
-                <p class="txt-share"><strong>Who to follow</strong></p>
-                <?php
-                foreach ($who_users as $user) {
-                    //  $u = User::getData($user->user_id);
-                    $user_follow = Follow::isUserFollow($user_id, $user->id);
-                ?>
-                    <div class="grid-share">
-                        <a style="position: relative; z-index:5; color:black" href="<?php echo $user->username;  ?>">
-                            <img
-                                src="assets/images/users/<?php echo $user->img; ?>"
-                                alt=""
-                                class="img-share" />
-                        </a>
-                        <div>
-                            <p>
-                                <a style="position: relative; z-index:5; color:black" href="<?php echo $user->username;  ?>">
-                                    <strong><?php echo $user->name; ?></strong>
-                                </a>
-                            </p>
-                            <p class="username">@<?php echo $user->username; ?>
-                                <?php if (Follow::FollowsYou($user->id, $user_id)) { ?>
-                                    <span class="ml-1 follows-you">Follows You</span>
-                            </p>
-                        <?php } ?></p>
-                        </div>
-                        <div>
-                            <button class="follow-btn follow-btn-m 
-                      <?= $user_follow ? 'following' : 'follow' ?>"
-                                data-follow="<?php echo $user->id; ?>"
-                                data-user="<?php echo $user_id; ?>"
-                                data-profile="<?php echo $u_id; ?>"
-                                style="font-weight: 700;">
-                                <?php if ($user_follow) { ?>
-                                    Following
-                                <?php } else {  ?>
-                                    Follow
-                                <?php }  ?>
-                            </button>
-                        </div>
-                    </div>
-
-                <?php } ?>
-
-
-            </div>
-
-        </div>
     </div>
     </div>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2024 at 09:21 AM
+-- Generation Time: Oct 04, 2024 at 02:57 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,7 +43,9 @@ INSERT INTO `comments` (`id`, `comment`, `user_id`, `post_id`, `time`) VALUES
 (44, 'This is GREAT', 25, 574, '2021-05-01 02:21:10'),
 (45, 'This is great!', 59, 730, '2022-01-13 12:21:18'),
 (46, 'here\'s a comment', 59, 735, '2022-01-13 12:28:10'),
-(47, 'wow', 61, 573, '2024-09-26 17:30:47');
+(47, 'wow', 61, 573, '2024-09-26 17:30:47'),
+(48, 'woah', 61, 574, '2024-10-01 11:22:20'),
+(49, 'hi', 61, 747, '2024-10-01 11:52:14');
 
 -- --------------------------------------------------------
 
@@ -139,7 +141,13 @@ INSERT INTO `follow` (`id`, `follower_id`, `following_id`, `time`) VALUES
 (197, 61, 43, '2024-09-28 13:06:56'),
 (198, 61, 55, '2024-09-28 13:06:57'),
 (199, 61, 56, '2024-09-28 13:06:57'),
-(202, 62, 2, '2024-09-29 10:20:29');
+(202, 62, 2, '2024-09-29 10:20:29'),
+(206, 61, 40, '2024-10-01 11:31:00'),
+(207, 61, 62, '2024-10-01 12:01:52'),
+(209, 62, 61, '2024-10-02 11:01:17'),
+(215, 61, 33, '2024-10-02 11:16:03'),
+(216, 61, 58, '2024-10-02 11:16:05'),
+(217, 61, 41, '2024-10-02 11:16:21');
 
 -- --------------------------------------------------------
 
@@ -245,7 +253,8 @@ INSERT INTO `likes` (`id`, `user_id`, `post_id`) VALUES
 (314, 60, 733),
 (315, 59, 735),
 (316, 59, 734),
-(319, 61, 573);
+(322, 62, 654),
+(323, 61, 574);
 
 -- --------------------------------------------------------
 
@@ -437,8 +446,16 @@ INSERT INTO `notifications` (`id`, `notify_for`, `notify_from`, `target`, `type`
 (244, 43, 61, 0, 'follow', '2024-09-28 13:06:56', 0, 0),
 (245, 55, 61, 0, 'follow', '2024-09-28 13:06:57', 0, 0),
 (246, 56, 61, 0, 'follow', '2024-09-28 13:06:57', 0, 0),
-(249, 2, 61, 573, 'like', '2024-09-28 13:22:46', 0, 0),
-(250, 2, 62, 0, 'follow', '2024-09-29 10:20:29', 0, 0);
+(250, 2, 62, 0, 'follow', '2024-09-29 10:20:29', 0, 0),
+(251, 2, 62, 654, 'like', '2024-09-29 11:15:51', 0, 0),
+(254, 2, 61, 574, 'like', '2024-09-30 08:48:02', 0, 0),
+(256, 2, 61, 574, 'comment', '2024-10-01 11:22:20', 0, 0),
+(257, 40, 61, 0, 'follow', '2024-10-01 11:31:00', 0, 0),
+(258, 62, 61, 0, 'follow', '2024-10-01 12:01:52', 1, 0),
+(260, 61, 62, 0, 'follow', '2024-10-02 11:01:17', 1, 0),
+(266, 33, 61, 0, 'follow', '2024-10-02 11:16:03', 0, 0),
+(267, 58, 61, 0, 'follow', '2024-10-02 11:16:05', 0, 0),
+(268, 41, 61, 0, 'follow', '2024-10-02 11:16:21', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -474,7 +491,13 @@ INSERT INTO `posts` (`id`, `user_id`, `post_on`) VALUES
 (735, 60, '2022-01-13 12:26:35'),
 (738, 61, '2024-09-27 09:32:02'),
 (740, 61, '2024-09-28 17:24:08'),
-(744, 61, '2024-09-28 20:09:08');
+(744, 61, '2024-09-28 20:09:08'),
+(745, 61, '2024-09-29 17:10:33'),
+(747, 61, '2024-10-01 11:51:55'),
+(750, 62, '2024-10-01 12:02:28'),
+(751, 61, '2024-10-01 12:10:14'),
+(752, 62, '2024-10-01 12:23:31'),
+(753, 61, '2024-10-02 11:10:56');
 
 -- --------------------------------------------------------
 
@@ -578,7 +601,13 @@ INSERT INTO `tweets` (`post_id`, `status`, `img`) VALUES
 (734, 'Here\'s a tweet with hashtags. #php #mysql #js #explore #fun', NULL),
 (738, 'Hey there!', NULL),
 (740, 'I’m still coding in the evening at 10:10 PM in the Philippines, and I’m so tired.', 'tweet-66f8118887813.jpg'),
-(744, 'Its already 2 AM, and Im wondering when Ill fix these bugs.', 'tweet-66f83834ec8e9.jpg');
+(744, 'Its already 2 AM, and Im wondering when Ill fix these bugs.', 'tweet-66f83834ec8e9.jpg'),
+(745, 'Im so done!\r\n\r\nLife Update: 4pm-10pm (No Progress) \r\n\r\nBugs Everywhere!', 'tweet-66f95fd9bb21e.jpg'),
+(747, 'hello world hehe', NULL),
+(750, 'Tomorrow will have an event! See you!', NULL),
+(751, 'Im a cat', NULL),
+(752, 'test', NULL),
+(753, 'Hello There im a cat', NULL);
 
 -- --------------------------------------------------------
 
@@ -596,35 +625,37 @@ CREATE TABLE `users` (
   `imgCover` varchar(255) NOT NULL DEFAULT 'cover.png',
   `bio` varchar(140) NOT NULL DEFAULT '',
   `location` varchar(255) NOT NULL DEFAULT '',
-  `website` varchar(255) NOT NULL DEFAULT ''
+  `website` varchar(255) NOT NULL DEFAULT '',
+  `role` int(1) NOT NULL DEFAULT 1,
+  `status` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `name`, `img`, `imgCover`, `bio`, `location`, `website`) VALUES
-(2, 'codeastro', 'astro@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Astro', 'user-61def28fce0d7.jpg', 'cover.png', 'Well, nothing...', 'South Dakota', 'https://codeastro.com/'),
-(5, 'matholiver', 'oliver@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Matthew Oliver', 'user-61dee95ac1f87.jpg', 'cover.png', 'I make money in my sleep', '', ''),
-(25, 'itselisagrnt', 'elisag@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Elisa Grant', 'user-61deea3b7c7b3.jpg', 'cover.png', 'Midnight snacker', '', ''),
-(27, 'viodaw', 'dawson@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Viola Dawson', 'default.jpg', 'cover.png', 'Recovering cake addict', '', ''),
-(33, 'floreshe', 'sherflore@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Sherman Flores', 'default.jpg', 'cover.png', 'Smart. Strong. Silly. ', '', ''),
-(34, 'darlyperez', 'daryl@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Daryl Perez', 'user-61deea7887174.png', 'cover.png', 'Donï¿½t like me? Donï¿½t care.', '', ''),
-(37, 'edwhitney', 'whed@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Whitney Edwards', 'default.jpg', 'cover.png', 'thank you, come again.', '', ''),
-(40, 'wilburpotter', 'potterw@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Wilbur Potter', 'user-61deeaa4a6178.jpg', 'cover.png', 'Having the time of my life', '', ''),
-(41, 'miwalters', 'micwalters@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Michelle Walters', 'user-61dee97f31d06.png', 'cover.png', 'Status Update: Currently hungry', '', ''),
-(42, 'osborne', 'aosborne@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Andy Osborne', 'default.jpg', 'user-609be2968c0b9.png', 'Don’t kale my vibe', '', ''),
-(43, 'tiffiny', 'irvint@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Tiffiny Irvin', 'default.jpg', 'cover.png', 'Seas the day', '', ''),
-(44, 'mrbarton', 'compton@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Barton Compton', 'user-61dee9ff9a415.jpg', 'cover.png', 'Doing better', '', ''),
-(54, 'swensonelt', 'swenson69@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Elton Swenson', 'default.jpg', 'cover.png', 'Life is beautiful', '', ''),
-(55, 'lynscott', 'scottt@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Lynn Scott', 'user-61dee92566ea7.jpg', 'cover.png', 'Goal: bigger smile', '', ''),
-(56, 'gregg58', 'gregcarr@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Greg Carr', 'user-61dee9a0f415d.png', 'cover.png', 'I apologize for anything I post while hungry', '', ''),
-(57, 'johnst', 'john@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'John Stuart', 'default.jpg', 'cover.png', 'Not like the rest of them', '', ''),
-(58, 'ralph', 'ralph5@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Ralph Garza', 'user-61dda8817afe8.png', 'cover.png', 'In a world of worriers, be the warrior', '', ''),
-(59, 'testacc', 'test@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'Test Account', 'user-61def0bcc0f0d.jpg', 'cover.png', 'I practice what I post!', 'New Jersey', 'https://testwebsite.com/'),
-(60, 'marctaylor', 'marc@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'Marc Taylor', 'user-61dfd28bd6e79.png', 'cover.png', 'Coffee in one hand, confidence in another.', 'Lake Isaiah', ''),
-(61, 'Asnari', 'asnaripacalna@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Asnari Pacalna', 'user-66f56fdb685d9.jpg', 'user-66f80a23be4c1.jpg', '', '', 'https://github.com/Kyaa-A'),
-(62, 'admin', 'admin@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Admin', 'default.jpg', 'cover.png', '', '', '');
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `name`, `img`, `imgCover`, `bio`, `location`, `website`, `role`, `status`) VALUES
+(2, 'codeastro', 'astro@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Astro', 'user-61def28fce0d7.jpg', 'cover.png', 'Well, nothing...', 'South Dakota', 'https://codeastro.com/', 1, 1),
+(5, 'matholiver', 'oliver@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Matthew Oliver', 'user-61dee95ac1f87.jpg', 'cover.png', 'I make money in my sleep', '', '', 1, 1),
+(25, 'itselisagrnt', 'elisag@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Elisa Grant', 'user-61deea3b7c7b3.jpg', 'cover.png', 'Midnight snacker', '', '', 1, 1),
+(27, 'viodaw', 'dawson@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Viola Dawson', 'default.jpg', 'cover.png', 'Recovering cake addict', '', '', 1, 1),
+(33, 'floreshe', 'sherflore@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Sherman Flores', 'default.jpg', 'cover.png', 'Smart. Strong. Silly. ', '', '', 1, 1),
+(34, 'darlyperez', 'daryl@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Daryl Perez', 'user-61deea7887174.png', 'cover.png', 'Donï¿½t like me? Donï¿½t care.', '', '', 1, 1),
+(37, 'edwhitney', 'whed@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Whitney Edwards', 'default.jpg', 'cover.png', 'thank you, come again.', '', '', 1, 1),
+(40, 'wilburpotter', 'potterw@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Wilbur Potter', 'user-61deeaa4a6178.jpg', 'cover.png', 'Having the time of my life', '', '', 1, 1),
+(41, 'miwalters', 'micwalters@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Michelle Walters', 'user-61dee97f31d06.png', 'cover.png', 'Status Update: Currently hungry', '', '', 1, 1),
+(42, 'osborne', 'aosborne@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Andy Osborne', 'default.jpg', 'user-609be2968c0b9.png', 'Don’t kale my vibe', '', '', 1, 1),
+(43, 'tiffiny', 'irvint@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Tiffiny Irvin', 'default.jpg', 'cover.png', 'Seas the day', '', '', 1, 1),
+(44, 'mrbarton', 'compton@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Barton Compton', 'user-61dee9ff9a415.jpg', 'cover.png', 'Doing better', '', '', 1, 1),
+(54, 'swensonelt', 'swenson69@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Elton Swenson', 'default.jpg', 'cover.png', 'Life is beautiful', '', '', 1, 1),
+(55, 'lynscott', 'scottt@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Lynn Scott', 'user-61dee92566ea7.jpg', 'cover.png', 'Goal: bigger smile', '', '', 1, 1),
+(56, 'gregg58', 'gregcarr@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Greg Carr', 'user-61dee9a0f415d.png', 'cover.png', 'I apologize for anything I post while hungry', '', '', 1, 1),
+(57, 'johnst', 'john@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'John Stuart', 'default.jpg', 'cover.png', 'Not like the rest of them', '', '', 1, 1),
+(58, 'ralph', 'ralph5@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Ralph Garza', 'user-61dda8817afe8.png', 'cover.png', 'In a world of worriers, be the warrior', '', '', 1, 1),
+(59, 'testacc', 'test@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'Test Account', 'user-61def0bcc0f0d.jpg', 'cover.png', 'I practice what I post!', 'New Jersey', 'https://testwebsite.com/', 1, 1),
+(60, 'marctaylor', 'marc@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'Marc Taylor', 'user-61dfd28bd6e79.png', 'cover.png', 'Coffee in one hand, confidence in another.', 'Lake Isaiah', '', 1, 1),
+(61, 'Asnari', 'asnaripacalna@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Asnari Pacalna', 'user-66fbb33cccd6e.jpg', 'user-66f80a23be4c1.jpg', '', '', 'https://github.com/Kyaa-A', 1, 1),
+(62, 'admin', 'admin@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Admin', 'user-66fbbb8b918fa.jpg', 'user-66fbbc5c6453f.png', '', '', '', 2, 1);
 
 --
 -- Indexes for dumped tables
@@ -712,31 +743,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `follow`
 --
 ALTER TABLE `follow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
 
 --
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=322;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=325;
 
 --
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=251;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=269;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=745;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=754;
 
 --
 -- AUTO_INCREMENT for table `replies`
