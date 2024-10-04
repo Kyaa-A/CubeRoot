@@ -1,6 +1,7 @@
 <?php
-include 'core/init.php';
-include 'handle/handleNotifications.php';
+include_once 'core/init.php';
+include_once 'handle/handleNotifications.php';
+include_once 'core/classes/connection.php'; 
 
 $user_id = $_SESSION['user_id'];
 $user = User::getData($user_id);
@@ -16,7 +17,13 @@ $notofication = User::notification($user_id);
 if (User::checkLogIn() === false)
     header('location: index.php');
 
+$db = Connect::connect(); // Now $db holds the PDO connection object
+
+$stmt = $db->prepare("SELECT id, username, img, email, status FROM users");
+$stmt->execute();
+$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -214,28 +221,36 @@ if (User::checkLogIn() === false)
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th> ID <span class="icon-arrow">&UpArrow;</span></th>
-                                            <th> Name <span class="icon-arrow">&UpArrow;</span></th>
-                                            <th> Email <span class="icon-arrow">&UpArrow;</span></th>
-                                            <th> Edit <span class="icon-arrow">&UpArrow;</span></th>
-                                            <th> Delete <span class="icon-arrow">&UpArrow;</span></th>
-                                            <th> Status <span class="icon-arrow">&UpArrow;</span></th>
+                                            <th> ID </th>
+                                            <th> Name </th>
+                                            <th> Email </th>
+                                            <th> Edit </th>
+                                            <th> Delete </th>
+                                            <th> Status </th>
                                         </tr>
                                     </thead>
-                                    
                                     <tbody>
-                                        <tr>
-                                            <td> 1 </td>
-                                            <td> <img src="images/Zinzu Chan Lee.jpg" alt="">Hehe</td>
-                                            <td> Seoul </td>
-                                            <td> Edit</td>
-                                            <td> Delete</td>
-                                            <td> <strong> <p class="status delivered">Active</p> </strong></td>
-                                        </tr>
+                                        <?php foreach ($users as $user): ?>
+                                            <tr>
+                                                <td> <?= $user['id']; ?> </td>
+                                                <td>
+                                                    <img src="assets/images/<?= $user['img']; ?>" alt="">
+                                                    <?= $user['username']; ?>
+                                                </td>
+                                                <td> <?= $user['email']; ?> </td>
+                                                <td> <button>Edit</button></td>
+                                                <td> <button class="delete" data-id="<?= $user['id']; ?>">Delete</button></td>
+                                                <td>
+                                                    <button class="toggle-status" data-id="<?= $user['id']; ?>">
+                                                        <?= ($user['status'] == 1) ? 'Active' : 'Inactive'; ?>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
-                                    
                                 </table>
                             </section>
+
                         </main>
                         <script src="script.js"></script>
                         <!-- END -->
@@ -262,6 +277,7 @@ if (User::checkLogIn() === false)
     <script src="assets/js/jquery-3.5.1.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/statusToggle.js?v=<?php echo time(); ?>"></script>
 </body>
 
 <style>
