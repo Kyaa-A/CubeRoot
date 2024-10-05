@@ -239,7 +239,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                 </td>
                                                 <td><?= $user['email']; ?></td>
                                                 <td><button>Edit</button></td>
-                                                <td><button class="delete" data-id="<?= $user['id']; ?>">Delete</button></td>
+                                                <td><button class="delete-user" data-id="<?php echo $user['id']; ?>">Delete</button></td>
                                                 <td>
                                                     <button class="toggle-status" data-id="<?php echo $user['id']; ?>" data-status="<?php echo $user['status']; ?>">
                                                         <?php echo $user['status'] == 1 ? 'Active' : 'Inactive'; ?>
@@ -280,6 +280,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="statusToggle.js"></script>
+    <script src="delete.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 

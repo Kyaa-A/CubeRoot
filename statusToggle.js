@@ -1,3 +1,5 @@
+// FOR STATUS
+
 $(document).on('click', '.toggle-status', function() {
     var userId = $(this).data('id');
     var currentStatus = $(this).data('status');
@@ -28,3 +30,5 @@ $(document).on('click', '.toggle-status', function() {
         }
     });
 });
+
+
