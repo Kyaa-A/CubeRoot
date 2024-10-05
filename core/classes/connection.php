@@ -12,21 +12,36 @@ class Connect {
 
       // this is try to use self function in connect to make login easier with :: operator
 
-    public static function connect() {
-         $servername =self::$servername;
-         $db_name = self::$db_name;
-        try {
-            $conn = new PDO("mysql:host=$servername;dbname=$db_name", self::$username, self::$password);
-            // set the PDO error mode to exception
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // public static function connect() {
+    //      $servername =self::$servername;
+    //      $db_name = self::$db_name;
+    //     try {
+    //         $conn = new PDO("mysql:host=$servername;dbname=$db_name", self::$username, self::$password);
+    //         // set the PDO error mode to exception
+    //         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
-          //   echo "Connected successfully";
-            } catch(PDOException $e) {
-            echo "Connection failed: " . $e->getMessage();
-            }
+    //       //   echo "Connected successfully";
+    //         } catch(PDOException $e) {
+    //         echo "Connection failed: " . $e->getMessage();
+    //         }
         
-            return $conn;
-    }
+    //         return $conn;
+    // }
+
+    public static function connect() {
+      if (!self::$pdo) {
+          $servername = self::$servername;
+          $db_name = self::$db_name;
+          try {
+              self::$pdo = new PDO("mysql:host=$servername;dbname=$db_name", self::$username, self::$password);
+              self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          } catch (PDOException $e) {
+              echo "Connection failed: " . $e->getMessage();
+          }
+      }
+      return self::$pdo;
+  }
+  
 
 }
 

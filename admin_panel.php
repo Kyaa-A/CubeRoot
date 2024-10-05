@@ -231,14 +231,24 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     </thead>
                                     <tbody>
                                         <?php foreach ($users as $user): ?>
-                                            <tr>
+                                            <tr data-id="<?= $user['id'] ?>">
                                                 <td><?= $user['id']; ?></td>
                                                 <td>
                                                     <img src="assets/images/<?= $user['img']; ?>" alt="">
                                                     <?= $user['username']; ?>
                                                 </td>
                                                 <td><?= $user['email']; ?></td>
-                                                <td><button>Edit</button></td>
+                                                <td>
+                                                    <button class="edit-user"
+                                                        data-toggle="modal"
+                                                        data-target="#editUserModal"
+                                                        data-id="<?= $user['id'] ?>"
+                                                        data-username="<?= $user['username'] ?>"
+                                                        data-email="<?= $user['email'] ?>">
+                                                        Edit
+                                                    </button>
+                                                </td>
+
                                                 <td><button class="delete-user" data-id="<?php echo $user['id']; ?>">Delete</button></td>
                                                 <td>
                                                     <button class="toggle-status" data-id="<?php echo $user['id']; ?>" data-status="<?php echo $user['status']; ?>">
@@ -251,6 +261,8 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     </tbody>
                                 </table>
                             </section>
+
+
 
 
                         </main>
@@ -281,8 +293,41 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="statusToggle.js"></script>
     <script src="delete.js"></script>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="edit.js"></script>
+
+    <!-- Edit User Modal -->
+    <div id="editUserModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="userId">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="saveChanges" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 
 </body>
 
