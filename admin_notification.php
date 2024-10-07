@@ -84,7 +84,7 @@ if (User::checkLogIn() === false)
                 <i class="notify-count"><?php echo $notify_count; ?></i>
               <?php } ?>
               <img
-                src="<?php echo BASE_URL . "/includes/icons/tweetnotif.png"; ?>"
+                src="<?php echo BASE_URL . "/includes/icons/administrator.png"; ?>"
                 alt=""
                 height="26.25px"
                 width="26.25px" />
@@ -188,13 +188,138 @@ if (User::checkLogIn() === false)
             </div>
 
           </div>
-          <div class="container mt-5" style="border: 1px solid red; min-height: 532px; width: 90%; margin-left: 58px">
-            <h1>test</h1>
+          <div class="container mt-5" style="min-height: 532px; width: 90%; margin-left: 55.5px; padding-left: 0px;">
+            <!-- CONTENT NOTIFICATION -->
 
-            
+
+            <!-- <?php foreach ($notofication as $notify) {
+                    $user = User::getData($notify->notify_from);
+                    $timeAgo = Tweet::getTimeAgo($notify->time);
+                  ?>
+              <?php if ($notify->type == 'like') {
+                      $icon = "<i style='color: red;font-size:30px;' class='fa-heart  fas ml-2'></i>";
+                      $msg = "Liked Your Tweet";
+                    } else if ($notify->type == 'retweet') {
+                      $icon = "<i style='font-size:30px;color: rgb(22, 207, 22);'  class='fas fa-retweet ml-2'></i>";
+                      $msg = "Retweeted Your Tweet";
+                    } else if ($notify->type == 'qoute') {
+                      $icon = "<i style='font-size:30px;color: rgb(22, 207, 22);'  class='fas fa-retweet ml-2'></i>";
+                      $msg = "Quoted Your Tweet";
+                    } else if ($notify->type == 'comment') {
+                      $icon = "<i style='font-size:30px;' class='far fa-comment ml-2'></i>";
+                      $msg = "Comment to your Tweet";
+                    } else if ($notify->type == 'reply') {
+                      $icon = "<i style='font-size:30px;' class='far fa-comment ml-2'></i>";
+                      $msg = "Reply to your Comment";
+                    } else if ($notify->type == 'follow') {
+                      $icon = "<i style='font-size:30px;' class='fas fa-user ml-2'></i>";
+                      $msg = "Followed You";
+                    } else if ($notify->type == 'mention') {
+                      $icon = "<i style='font-size:30px;' class='fas fa-user ml-2'></i>";
+                      $msg = "Mention you in Tweet";
+                    } ?>
+
+              <div style="position: relative; border-bottom:4px solid #F5F8FA;" class="box-tweet py-3 ">
+                <a href="
+                        <?php if ($notify->type == 'follow') {
+                          echo $user->username;
+                        } else { ?>
+                            status/<?php echo $notify->target; ?>
+                        <?php } ?>  ">
+                  <span style="position:absolute; width:100%; height:100%; top:0;left: 0; z-index: 1;"></span>
+                </a>
+                <div class="grid-tweet">
+                  <div class="icon mt-2">
+                    <?php echo $icon; ?>
+                  </div>
+                  <div class="notify-user">
+                    <p>
+                      <a style="position: relative; z-index:1000;" href="<?php echo $user->username;  ?>">
+                        <img class="img-user" src="assets/images/users/<?php echo $user->img ?>" alt="">
+                      </a>
+
+                    </p>
+                    <p> <a style="font-weight: 700;
+                                    font-size:18px;
+                                    position: relative; z-index:1000;" href="<?php echo $user->username; ?>">
+                        <?php echo $user->name; ?> </a> <?php echo $msg; ?>
+                      <span style="font-weight: 500;" class="ml-3">
+                        <?php echo $timeAgo; ?>
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            <?php  } ?> -->
+
+            <?php if (empty($notofication)) : ?>
+              <p>No notifications to display.</p>
+            <?php else : ?>
+              <?php foreach ($notofication as $notify) : ?>
+                <?php
+                // var_dump($notify); // Debugging: Check the notification object
+                $user = User::getData($notify->notify_from);
+                if (!$user) echo "User not found for ID: " . $notify->notify_from; // Check if user data is retrieved
+                $timeAgo = Tweet::getTimeAgo($notify->time);
+                ?>
+
+                <?php
+                // Determine the message and icon based on the notification type
+                if ($notify->type == 'like') {
+                  $icon = "<i style='color: red;font-size:30px;' class='fa-heart  fas ml-2'></i>";
+                  $msg = "Liked Your Tweet";
+                } else if ($notify->type == 'retweet') {
+                  $icon = "<i style='font-size:30px;color: rgb(22, 207, 22);'  class='fas fa-retweet ml-2'></i>";
+                  $msg = "Retweeted Your Tweet";
+                } else if ($notify->type == 'qoute') {
+                  $icon = "<i style='font-size:30px;color: rgb(22, 207, 22);'  class='fas fa-retweet ml-2'></i>";
+                  $msg = "Quoted Your Tweet";
+                } else if ($notify->type == 'comment') {
+                  $icon = "<i style='font-size:30px;' class='far fa-comment ml-2'></i>";
+                  $msg = "Commented on your Tweet";
+                } else if ($notify->type == 'reply') {
+                  $icon = "<i style='font-size:30px;' class='far fa-comment ml-2'></i>";
+                  $msg = "Replied to your Comment";
+                } else if ($notify->type == 'follow') {
+                  $icon = "<i style='font-size:30px;' class='fas fa-user ml-2'></i>";
+                  $msg = "Followed You";
+                } else if ($notify->type == 'mention') {
+                  $icon = "<i style='font-size:30px;' class='fas fa-user ml-2'></i>";
+                  $msg = "Mentioned you in a Tweet";
+                } else {
+                  $icon = ""; // Fallback icon if type doesn't match
+                  $msg = "Notification type unknown";
+                }
+                ?>
+
+                <div style="position: relative; border-bottom:4px solid #F5F8FA;" class="box-tweet py-3 ">
+                  <a href="<?php echo ($notify->type == 'follow') ? $user->username : "status/{$notify->target}"; ?>">
+                    <span style="position:absolute; width:100%; height:100%; top:0;left: 0; z-index: 1;"></span>
+                  </a>
+                  <div class="grid-tweet">
+                    <div class="icon mt-2">
+                      <?php echo $icon; ?>
+                    </div>
+                    <div class="notify-user">
+                      <p>
+                        <a style="position: relative; z-index:1000;" href="<?php echo $user->username; ?>">
+                          <img class="img-user" src="assets/images/users/<?php echo $user->img; ?>" alt="">
+                        </a>
+                      </p>
+                      <p>
+                        <a style="font-weight: 700; font-size:18px; position: relative; z-index:1000;" href="<?php echo $user->username; ?>">
+                          <?php echo $user->name; ?>
+                        </a>
+                        <?php echo $msg; ?>
+                        <span style="font-weight: 500;" class="ml-3"><?php echo $timeAgo; ?></span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            <?php endif; ?>
 
           </div>
-
 
 
         </div>

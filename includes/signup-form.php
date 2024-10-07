@@ -31,7 +31,7 @@
                     <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                 </div>
                   <div class="text-center">
-                  <button type="submit" name="signup" class="btn btn-primary">Sign Up</button>
+                  <button type="submit" name="signup" class="btn btn-primary" style="background-color: #8F0A8B;">Sign Up</button>
                   </div>
                
 </form>

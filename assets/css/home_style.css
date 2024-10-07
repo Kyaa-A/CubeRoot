@@ -50,7 +50,7 @@ body {
   margin-bottom: 20px !important;
 }
 #mine .grid-sidebar:hover {
-  color: #1da1f2 !important;
+  color: #8F0A8B !important;
   cursor: pointer !important;
 }
 #mine .icon-sidebar-align {
@@ -59,7 +59,7 @@ body {
   align-items: center !important;
 }
 #mine .bg-active {
-  color: #1da1f2 !important;
+  color: #8F0A8B !important;
   font-weight: bold !important;
 }
 
@@ -81,7 +81,7 @@ body {
   border: 0px solid #000000;
   cursor: pointer;
   margin-left: 5px;
-  background: #1da1f2;
+  background: #8F0A8B;
   font-weight: 900;
   transition: 0.3s;
 }
@@ -370,7 +370,7 @@ body {
 }
 #mine .hover-reaction-comment:hover {
   background-color: #bee4fb;
-  color: #1da1f2;
+  color: #8F0A8B;
 }
 #mine .hover-reaction-retweet:hover {
   background-color: #fafbed;
@@ -447,7 +447,7 @@ body {
 #mine .button-signup {
   display: inline-block;
   font-weight: 400;
-  color: #1da1f2;
+  color: #8F0A8B;
   height: auto;
   width: 78px;
   text-align: center;
@@ -460,7 +460,7 @@ body {
   border-radius: 28px 28px 28px 28px;
   -moz-border-radius: 28px 28px 28px 28px;
   -webkit-border-radius: 28px 28px 28px 28px;
-  border: 1px solid #1da1f2;
+  border: 1px solid #8F0A8B;
   cursor: pointer;
   background-color: transparent;
 }
@@ -568,7 +568,7 @@ textarea {
 #whathappen .submit {
   border: none;
   border-radius: 20px;
-  background-color: rgb(0, 172, 237);
+  background-color: #8F0A8B;
   /* margin: 5px; */
   margin-top: 12px;
   margin-right: 5px;
@@ -585,14 +585,14 @@ textarea {
 }
 
 #whathappen .bioCount {
-  color: rgb(0, 172, 237);
+  color: #8F0A8B;
   font-size: 14px;
   font-weight: 600;
   margin-right: 7px;
 }
 
 #whathappen i {
-  color: rgb(0, 172, 237);
+  color: #8F0A8B;
   font-size: 25px;
 }
 
@@ -821,7 +821,7 @@ textarea {
 }
 
 .hash-box ul li:hover {
-  background: #1da1f2;
+  background: #8F0A8B;
 }
 
 .hash-box ul li:hover > a {
@@ -834,7 +834,7 @@ textarea {
   color: #716868;
 }
 .hash-tweet {
-  color: #1da1f2;
+  color: #8F0A8B;
   font-weight: 500;
   position: relative;
   z-index: 40;
@@ -1049,7 +1049,7 @@ textarea {
 }
 .arrow-style {
   /* margin-left: 10px; */
-  color: rgb(72, 161, 235);
+  color: #8F0A8B;
   /* margin-top: 8px; */
   transition: 0.5s;
   padding: 10px;
@@ -1134,7 +1134,7 @@ textarea {
 
 .follow-btn {
   display: inline-block;
-  color: #1da1f2;
+  color: #8F0A8B;
   height: 42px;
   text-align: center;
   vertical-align: middle;
@@ -1144,7 +1144,7 @@ textarea {
   border-radius: 28px 28px 28px 28px;
   -moz-border-radius: 28px 28px 28px 28px;
   -webkit-border-radius: 28px 28px 28px 28px;
-  border: 1px solid #1da1f2;
+  border: 1px solid #8F0A8B;
   cursor: pointer;
   margin-right: 30px;
   margin-top: 15px;
@@ -1183,10 +1183,10 @@ button:focus {
 }
 .wrapper-left a:hover {
   text-decoration: none;
-  color: #1da1f2;
+  color: #8F0A8B;
 }
 #mine .wrapper-left-active {
-  color: #1da1f2;
+  color: #8F0A8B;
 }
 .follows-you {
   font-size: 13px;
@@ -1198,7 +1198,7 @@ button:focus {
 }
 .notify-count {
   position: absolute;
-  background-color: #1da1f2;
+  background-color: #8F0A8B;
   font-size: 11px;
   color: white;
   border-radius: 18px;
@@ -1253,6 +1253,7 @@ button:focus {
     -moz-box-shadow: 0px 3px 5px -1px rgba(204, 174, 204, 1);
     box-shadow: 0px 3px 5px -1px rgba(204, 174, 204, 1);
   }
+
   #mine .box-tweet {
     margin-top: 0;
     margin-left: 8%;

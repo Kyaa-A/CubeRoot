@@ -2,7 +2,6 @@ body{
 	margin: 0;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	background-color: white;
-	/* color twitter : 1da1f2 */
 }
 .twt-main{
 	height: 100%;
@@ -54,8 +53,8 @@ body{
 }
 .login-btn{
 	background-color: #fff;
-    border: 1px solid #8F0A8B;
-	color: #8F0A8B;
+    border: 1px solid #1da1f2;
+	color: #1da1f2;
 	border-radius: 80px;
 	font-weight: 700;
 	font-size: 14px;
@@ -66,7 +65,7 @@ body{
 
 }
 .login-btn:hover {
-	background-color: #8F0A8B25;
+	background-color: #1DA1F225;
     transition: all 0.2s;
 }
 
@@ -103,14 +102,14 @@ body{
 }
 .signup-btn{
 	margin-top: 15px;
-	background-color: #8F0A8B;
-    border: 1px solid #8F0A8B;
+	background-color: #1da1f2;
+    border: 1px solid #1da1f2;
 	color: #fff;
 }
 .signin-btn{
 	background-color: #fff;
-    border: 1px solid #8F0A8B;
-	color: #8F0A8B;
+    border: 1px solid #1da1f2;
+	color: #1da1f2;
 }
 
 .pri-btn{
@@ -129,7 +128,7 @@ body{
 	background-position:0px -140px;
 	width: 50%;
 	height: 100vh;
-	background-color: #8F0A8B;
+	background-color: #FFA12A;
 	float: left;
 }
 .features-div{
@@ -156,10 +155,8 @@ footer{
 	position: fixed;
 	bottom: 0;
 	width: 100%;
-	border-top: 1px solid #8F0A8B;
+	border-top: 1px solid #e6ecf0;
     background-color: #fff;
-	padding-top: 10px;
-	
 }
 ul{
 	background: #fff;
@@ -247,3 +244,10 @@ button:focus {
     outline: none !important;
 }
 
+.features-div p{
+	color: #14171a;
+}
+
+main{
+	background-color: #14171a;
+}

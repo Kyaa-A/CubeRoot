@@ -125,7 +125,7 @@ $notify_count = User::CountNotification($user_id);
                 <i class="notify-count"><?php echo $notify_count; ?></i>
               <?php } ?>
               <img
-                src="<?php echo BASE_URL . "/includes/icons/tweetnotif.png"; ?>"
+                src="<?php echo BASE_URL . "/includes/icons/administrator.png"; ?>"
                 alt=""
                 height="26.25px"
                 width="26.25px" />

@@ -53,7 +53,7 @@ a:hover {
   margin-bottom: 20px !important;
 }
 #mine .grid-sidebar:hover {
-  color: #1da1f2 !important;
+  color: #8F0A8B !important;
   cursor: pointer !important;
 }
 #mine .icon-sidebar-align {
@@ -62,7 +62,7 @@ a:hover {
   align-items: center !important;
 }
 #mine .bg-active {
-  color: #1da1f2 !important;
+  color: #8F0A8B !important;
   font-weight: bold !important;
 }
 
@@ -84,7 +84,7 @@ a:hover {
   border: 0px solid #000000;
   cursor: pointer;
   margin-left: 5px;
-  background: #1da1f2;
+  background: #8F0A8B;
   font-weight: 900;
   transition: 0.3s;
 }
@@ -269,7 +269,7 @@ a:hover {
 
 .arrow-style {
   margin-left: 10px;
-  color: rgb(72, 161, 235);
+  color: #8F0A8B;
   margin-top: 8px;
   transition: 0.5s;
   padding: 10px;
@@ -302,7 +302,7 @@ a:hover {
 }
 .home-edit-button {
   display: inline-block;
-  color: #1da1f2;
+  color: #8F0A8B;
   height: 42px;
   text-align: center;
   vertical-align: middle;
@@ -312,7 +312,7 @@ a:hover {
   border-radius: 28px 28px 28px 28px;
   -moz-border-radius: 28px 28px 28px 28px;
   -webkit-border-radius: 28px 28px 28px 28px;
-  border: 1px solid #1da1f2;
+  border: 1px solid #8F0A8B;
   cursor: pointer;
   margin-right: 25px;
   margin-top: 15px;
@@ -398,7 +398,7 @@ a:hover {
 #mine .button-signup {
   display: inline-block;
   font-weight: 400;
-  color: #1da1f2;
+  color: #8F0A8B;
   height: auto;
   width: 78px;
   text-align: center;
@@ -411,7 +411,7 @@ a:hover {
   border-radius: 28px 28px 28px 28px;
   -moz-border-radius: 28px 28px 28px 28px;
   -webkit-border-radius: 28px 28px 28px 28px;
-  border: 1px solid #1da1f2;
+  border: 1px solid #8F0A8B;
   cursor: pointer;
   background-color: transparent;
 }
@@ -525,7 +525,7 @@ a:hover {
 
 .follow-btn {
   display: inline-block;
-  color: #1da1f2;
+  color: #8F0A8B;
   height: 42px;
   text-align: center;
   vertical-align: middle;
@@ -535,7 +535,7 @@ a:hover {
   border-radius: 28px 28px 28px 28px;
   -moz-border-radius: 28px 28px 28px 28px;
   -webkit-border-radius: 28px 28px 28px 28px;
-  border: 1px solid #1da1f2;
+  border: 1px solid #8F0A8B;
   cursor: pointer;
   margin-right: 30px;
   margin-top: 15px;
@@ -802,10 +802,10 @@ button:focus {
 }
 .wrapper-left a:hover {
   text-decoration: none;
-  color: #1da1f2;
+  color: #8F0A8B;
 }
 #mine .wrapper-left-active {
-  color: #1da1f2;
+  color: #8F0A8B;
 }
 
 /* posts */
@@ -931,7 +931,7 @@ button:focus {
 }
 #mine .hover-reaction-comment:hover {
   background-color: #bee4fb;
-  color: #1da1f2;
+  color: #8F0A8B;
 }
 #mine .hover-reaction-retweet:hover {
   background-color: #fafbed;
@@ -1021,7 +1021,7 @@ button:focus {
 
 .notify-count {
   position: absolute;
-  background-color: #1da1f2;
+  background-color: #8F0A8B;
   font-size: 11px;
   color: white;
   border-radius: 18px;
@@ -1312,7 +1312,7 @@ button:focus {
 }
 
 .tweet-links .hash-tweet {
-  color: #1da1f2;
+  color: #8F0A8B;
   font-weight: 500;
   position: relative;
   z-index: 40;
@@ -1321,7 +1321,7 @@ button:focus {
   text-decoration: underline;
 }
 .nav-link.active {
-  color: #2290d4 !important;
+  color: #8F0A8B !important;
   font-weight: 600 !important;
 }
 .comment-post {
@@ -1348,3 +1348,8 @@ button:focus {
 /* .setting-head{
 	margin-left: 3%;
 } */
+
+.nav- {
+  color: #8F0A8B !important;
+  font-weight: 600 !important;
+}

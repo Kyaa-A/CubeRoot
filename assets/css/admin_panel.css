@@ -55,7 +55,7 @@ a:hover {
   margin-bottom: 20px !important;
 }
 #mine .grid-sidebar:hover {
-  color: #1da1f2 !important;
+  color: #8F0A8B !important;
   cursor: pointer !important;
 }
 #mine .icon-sidebar-align {
@@ -64,7 +64,7 @@ a:hover {
   align-items: center !important;
 }
 #mine .bg-active {
-  color: #1da1f2 !important;
+  color: #8F0A8B !important;
   font-weight: bold !important;
 }
 
@@ -86,7 +86,7 @@ a:hover {
   border: 0px solid #000000;
   cursor: pointer;
   margin-left: 5px;
-  background: #1da1f2;
+  background: #8F0A8B;
   font-weight: 900;
   transition: 0.3s;
 }
@@ -269,7 +269,7 @@ a:hover {
 
 .arrow-style {
   margin-left: 10px;
-  color: rgb(72, 161, 235);
+  color: #8F0A8B;
   margin-top: 8px;
   transition: 0.5s;
   padding: 10px;
@@ -302,7 +302,7 @@ a:hover {
 }
 .home-edit-button {
   display: inline-block;
-  color: #1da1f2;
+  color: #8F0A8B;
   height: 42px;
   text-align: center;
   vertical-align: middle;
@@ -312,7 +312,7 @@ a:hover {
   border-radius: 28px 28px 28px 28px;
   -moz-border-radius: 28px 28px 28px 28px;
   -webkit-border-radius: 28px 28px 28px 28px;
-  border: 1px solid #1da1f2;
+  border: 1px solid #8F0A8B;
   cursor: pointer;
   margin-right: 25px;
   margin-top: 15px;
@@ -398,7 +398,7 @@ a:hover {
 #mine .button-signup {
   display: inline-block;
   font-weight: 400;
-  color: #1da1f2;
+  color: #8F0A8B;
   height: auto;
   width: 78px;
   text-align: center;
@@ -411,7 +411,7 @@ a:hover {
   border-radius: 28px 28px 28px 28px;
   -moz-border-radius: 28px 28px 28px 28px;
   -webkit-border-radius: 28px 28px 28px 28px;
-  border: 1px solid #1da1f2;
+  border: 1px solid #8F0A8B;
   cursor: pointer;
   background-color: transparent;
 }
@@ -525,7 +525,7 @@ a:hover {
 
 .follow-btn {
   display: inline-block;
-  color: #1da1f2;
+  color: #8F0A8B;
   height: 42px;
   text-align: center;
   vertical-align: middle;
@@ -535,7 +535,7 @@ a:hover {
   border-radius: 28px 28px 28px 28px;
   -moz-border-radius: 28px 28px 28px 28px;
   -webkit-border-radius: 28px 28px 28px 28px;
-  border: 1px solid #1da1f2;
+  border: 1px solid #8F0A8B;
   cursor: pointer;
   margin-right: 30px;
   margin-top: 15px;
@@ -804,10 +804,10 @@ button:focus {
 }
 .wrapper-left a:hover {
   text-decoration: none;
-  color: #1da1f2;
+  color: #8F0A8B;
 }
 #mine .wrapper-left-active {
-  color: #1da1f2;
+  color: #8F0A8B;
 }
 
 /* posts */
@@ -933,7 +933,7 @@ button:focus {
 }
 #mine .hover-reaction-comment:hover {
   background-color: #bee4fb;
-  color: #1da1f2;
+  color: #8F0A8B;
 }
 #mine .hover-reaction-retweet:hover {
   background-color: #fafbed;
@@ -1023,7 +1023,7 @@ button:focus {
 
 .notify-count {
   position: absolute;
-  background-color: #1da1f2;
+  background-color: #8F0A8B;
   font-size: 11px;
   color: white;
   border-radius: 18px;
@@ -1308,7 +1308,7 @@ button:focus {
 }
 
 .tweet-links .hash-tweet {
-  color: #1da1f2;
+  color: #8F0A8B;
   font-weight: 500;
   position: relative;
   z-index: 40;
@@ -1474,9 +1474,10 @@ thead th {
     position: sticky;
     top: 0;
     left: 0;
-    background-color: #d5d1defe;
+    background-color: #8F0A8B;
     cursor: pointer;
     text-transform: capitalize;
+    color: #fff;
 }
 
 tbody tr:nth-child(even) {
@@ -1581,16 +1582,17 @@ thead th.asc span.icon-arrow{
 thead th.active,tbody td.active {
     color: #6c00bd;
 }
-
+/* 
 .export__file {
     position: relative;
+    border:1px solid red;
 }
 
 .export__file .export__file-btn {
     display: inline-block;
     width: 2rem;
     height: 2rem;
-    background: #fff6 url(images/export.png) center / 80% no-repeat;
+    background: #fff6 url(../../includes/icons/administrator.png) center / 80% no-repeat;
     border-radius: 50%;
     transition: .2s ease-in-out;
 }
@@ -1656,4 +1658,32 @@ thead th.active,tbody td.active {
 .export__file .export__file-options img{
     width: 2rem;
     height: auto;
+} */
+
+.search_data{
+  border: 1px solid red;
+  height: 40px;
+}
+
+.edit-user, .delete-user, .toggle-status{
+  width: 100%;
+  color: #fff;
+  border-radius: 50px;
+  border: 0;
+}
+
+.edit-user{
+  background-color: #8F0A8B;
+}
+
+.delete-user{
+  background-color: #8F0A8B;
+}
+
+.toggle-status.active {
+  background-color: green;
+}
+
+.toggle-status.inactive {
+  background-color: red;
 }

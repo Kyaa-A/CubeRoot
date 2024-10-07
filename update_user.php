@@ -20,8 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':id', $id);
 
         if ($stmt->execute()) {
+            // Return success response
             echo json_encode(['success' => true]);
         } else {
+            // Return error response
             echo json_encode(['success' => false, 'message' => 'Database update failed.']);
         }
     } else {

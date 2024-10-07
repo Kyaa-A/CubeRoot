@@ -91,7 +91,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <i class="notify-count"><?php echo $notify_count; ?></i>
                             <?php } ?>
                             <img
-                                src="<?php echo BASE_URL . "/includes/icons/tweetnotif.png"; ?>"
+                                src="<?php echo BASE_URL . "/includes/icons/administrator.png"; ?>"
                                 alt=""
                                 height="26.25px"
                                 width="26.25px" />
@@ -199,10 +199,10 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div class="container_panel">
                         <main class="table" id="customers_table">
                             <section class="table__header">
-                                <h1>User's Data</h1>
+                                <h2>User's Data</h2>
 
                                 <div class="input-group">
-                                    <input type="search" placeholder="Search Data...">
+                                    <input type="search" class="search_data" placeholder="Search Data...">
                                 </div>
                                 <!-- EXPORT -->
                                 <!-- <div class="export__file">
@@ -251,9 +251,12 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                                                 <td><button class="delete-user" data-id="<?php echo $user['id']; ?>">Delete</button></td>
                                                 <td>
-                                                    <button class="toggle-status" data-id="<?php echo $user['id']; ?>" data-status="<?php echo $user['status']; ?>">
+                                                    <button class="toggle-status <?php echo $user['status'] == 1 ? 'active' : 'inactive'; ?>"
+                                                        data-id="<?php echo $user['id']; ?>"
+                                                        data-status="<?php echo $user['status']; ?>">
                                                         <?php echo $user['status'] == 1 ? 'Active' : 'Inactive'; ?>
                                                     </button>
+
 
                                                 </td>
                                             </tr>
@@ -298,32 +301,32 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <!-- Edit User Modal -->
     <div id="editUserModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <input type="hidden" name="userId">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" name="username" required>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" name="email" required>
+                <div class="modal-body">
+                    <input type="hidden" name="userId">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" id="saveChanges" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <div class="modal-footer">
+                    <button type="button" id="saveChanges" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 

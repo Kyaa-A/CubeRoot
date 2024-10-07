@@ -191,7 +191,7 @@ header('location: index.php');
                       
                       <div class="text-center">
 
-                        <button type="submit" name="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="submit" name="submit" class="btn btn-primary" style="background-color: #8F0A8B;">Save Changes</button>
                       </div>
 
                     </form>
@@ -243,7 +243,7 @@ header('location: index.php');
                       
                       <div class="text-center">
 
-                        <button type="submit" name="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="submit" name="submit" class="btn btn-primary" style="background-color: #8F0A8B;"  >Save Changes</button>
                       </div>
 
                     </form>

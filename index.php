@@ -30,8 +30,8 @@
         <div class="slow-login">
           <img class="login-bird" src="<?php echo BASE_URL . "/assets/images/twitterlogo.png"; ?>" alt="bird">
           <button class="login-small-display signin-btn pri-btn">Log in</button>
-          <span class="front-para">See what’s happening in the world right now</span>
-          <span class="join">Join Twitter Clone Today.</span>
+          <span class="front-para">Unlock Connections at Every Angle</span>
+          <span class="join">Join CubeRoot Today</span>
           <button type="button" id="auto" onclick="" class="signup-btn pri-btn" data-toggle="modal" data-target="#exampleModalCenter">
             Sign Up</button>
 
@@ -81,7 +81,7 @@
           <li><a href="#">Developers</a></li>
           <li><a href="#">Settings</a></li>
           <li>© 2024 - Social Network</li>
-          <li style="color:#1DA1F2;"><b>- Developed By Asnari</b></li>
+          <li style="color:#8F0A8B;"><b>- Developed By Asnari</b></li>
         </ul>
       </footer>
     </main>

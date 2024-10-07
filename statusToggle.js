@@ -1,5 +1,3 @@
-// FOR STATUS
-
 $(document).on('click', '.toggle-status', function() {
     var userId = $(this).data('id');
     var currentStatus = $(this).data('status');
@@ -15,12 +13,19 @@ $(document).on('click', '.toggle-status', function() {
         dataType: 'json', // Ensure you expect JSON response
         success: function(response) {
             if (response.success) {
-                // Update button text and data-status attribute
+                // Update button text, status, and class
+                var button = $('.toggle-status[data-id="' + userId + '"]');
                 var buttonText = newStatus == 1 ? 'Active' : 'Inactive';
-                $('.toggle-status[data-id="' + userId + '"]')
-                    .text(buttonText)
-                    .data('status', newStatus)
-                    .toggleClass('active inactive'); // Optional: add classes for styling
+
+                button.text(buttonText)
+                      .data('status', newStatus);
+
+                // Toggle the class based on the new status
+                if (newStatus == 1) {
+                    button.removeClass('inactive').addClass('active');
+                } else {
+                    button.removeClass('active').addClass('inactive');
+                }
             } else {
                 alert('Error updating status');
             }
@@ -30,5 +35,3 @@ $(document).on('click', '.toggle-status', function() {
         }
     });
 });
-
-
