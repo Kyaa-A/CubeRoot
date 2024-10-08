@@ -152,7 +152,7 @@ $notify_count = User::CountNotification($user_id);
         </a>
         <a href="<?php echo BASE_URL . "admin_account.php"; ?>">
           <div class="grid-sidebar " style="margin-top: 30px;">
-            <div class="icon-sidebar-align">
+            <div class="icon-sidebar-align">  
               <img src="<?php echo BASE_URL . "/includes/icons/tweetsetting.png"; ?>" alt="" height="26.25px" width="26.25px" />
             </div>
 

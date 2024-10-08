@@ -217,7 +217,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     </div>
                                 </div> -->
                             </section>
-                            <section class="table__body">
+                            <section class="table__body" >
                                 <table>
                                     <thead>
                                         <tr>
@@ -231,10 +231,10 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     </thead>
                                     <tbody>
                                         <?php foreach ($users as $user): ?>
-                                            <tr data-id="<?= $user['id'] ?>">
+                                            <tr data-id="<?= $user['id'] ?>" >
                                                 <td><?= $user['id']; ?></td>
                                                 <td>
-                                                    <img src="assets/images/users/<?= $user['img']; ?>" alt="" style="width: 51px; height: 50px">
+                                                    <img src="assets/images/users/<?= $user['img']; ?>" alt="" style="width: 36px; height: 35px">
                                                     <?= $user['username']; ?>
                                                 </td>
 

@@ -1687,3 +1687,8 @@ thead th.active,tbody td.active {
 .toggle-status.inactive {
   background-color: red;
 }
+
+tbody tr{
+  align-items: center;
+  justify-content: center;
+}
