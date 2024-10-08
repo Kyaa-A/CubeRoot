@@ -234,9 +234,10 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <tr data-id="<?= $user['id'] ?>">
                                                 <td><?= $user['id']; ?></td>
                                                 <td>
-                                                    <img src="assets/images/<?= $user['img']; ?>" alt="">
+                                                    <img src="assets/images/users/<?= $user['img']; ?>" alt="" style="width: 51px; height: 50px">
                                                     <?= $user['username']; ?>
                                                 </td>
+
                                                 <td><?= $user['email']; ?></td>
                                                 <td>
                                                     <button class="edit-user"
