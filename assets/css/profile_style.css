@@ -740,7 +740,7 @@ button:focus {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#207ce5',GradientType=0 ); /* IE6-9 */
 }
 .retweet-popup-footer-right button[type="submit"]:active {
-  background: #3a8efb;
+  background: #8F0A8B;
   box-shadow: inset 0px 0px 3px black;
 }
 .retweet-popup-footer-right button i {
@@ -1349,7 +1349,11 @@ button:focus {
 	margin-left: 3%;
 } */
 
-.nav- {
-  color: #8F0A8B !important;
-  font-weight: 600 !important;
+
+
+.nav-link.active {
+  background-color: #8F0A8B !important; /* Change the active background color */
+  border-color: #8F0A8B !important; /* Optional: Change the border color if needed */
+  color: white !important; /* Ensure the text is visible on the purple background */
 }
+

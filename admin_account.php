@@ -179,8 +179,8 @@ if (User::checkLogIn() === false)
         <div class="box-home-settings feed">
           <div class="container">
             <div class="nav flex-column nav-pills setting-head" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <a style="color:black !important;" class="nav-link active text-center" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Change Email or Username</a>
-              <a style="color:black !important;" class="nav-link text-center" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Change Password</a>
+              <a  class="nav-link active text-center" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Change Email or Username</a>
+              <a  class="nav-link text-center" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Change Password</a>
 
             </div>
             <div class="tab-content" id="v-pills-tabContent">
@@ -214,7 +214,7 @@ if (User::checkLogIn() === false)
 
                   <div class="text-center">
 
-                    <button type="submit" name="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="submit" name="submit" class="btn btn-primary" style="background-color: #8F0A8B;border: 0" >Save Changes</button>
                   </div>
 
                 </form>
@@ -267,7 +267,7 @@ if (User::checkLogIn() === false)
 
                   <div class="text-center">
 
-                    <button type="submit" name="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="submit" name="submit" class="btn btn-primary" style="background-color: #8F0A8B;border: 0" >Save Changes</button>
                   </div>
 
                 </form>
