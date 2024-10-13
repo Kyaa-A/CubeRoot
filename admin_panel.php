@@ -200,22 +200,9 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <main class="table" id="customers_table">
                             <section class="table__header">
                                 <h2>User's Data</h2>
-
                                 <div class="input-group">
-                                    <input type="search" class="search_data" placeholder="Search Data...">
+                                    <input type="search" class="search_data" id="searchInput" placeholder="Search Data...">
                                 </div>
-                                <!-- EXPORT -->
-                                <!-- <div class="export__file">
-                                    <label for="export-file" class="export__file-btn" title="Export File"></label>
-                                    <input type="checkbox" id="export-file">
-                                    <div class="export__file-options">
-                                        <label>Export As &nbsp; &#10140;</label>
-                                        <label for="export-file" id="toPDF">PDF <img src="images/pdf.png" alt=""></label>
-                                        <label for="export-file" id="toJSON">JSON <img src="images/json.png" alt=""></label>
-                                        <label for="export-file" id="toCSV">CSV <img src="images/csv.png" alt=""></label>
-                                        <label for="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt=""></label>
-                                    </div>
-                                </div> -->
                             </section>
                             <section class="table__body" >
                                 <table>
@@ -298,8 +285,12 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <script src="statusToggle.js"></script>
     <script src="delete.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <script src="edit.js"></script>
 
+
+    
     <!-- Edit User Modal -->
     <div id="editUserModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

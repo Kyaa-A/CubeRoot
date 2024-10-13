@@ -1,33 +1,34 @@
-/**
-Responsive HTML Table With Pure CSS - Web Design/UI Design
-
-Code written by:
-👨🏻‍⚕️ @Coding Design (Jeet Saru)
-
-> You can do whatever you want with the code. However if you love my content, you can **SUBSCRIBED** my YouTube Channel.
-
-🌎link: www.youtube.com/codingdesign 
-*/
-
-const search = document.querySelector('.input-group input'),
-    table_rows = document.querySelectorAll('tbody tr'),
-    table_headings = document.querySelectorAll('thead th');
-
-// 1. Searching for specific data of HTML table
-search.addEventListener('input', searchTable);
-
+// 1. SEARCH
 function searchTable() {
+    let noResults = true; // Flag to check if any results are found
+
     table_rows.forEach((row, i) => {
         let table_data = row.textContent.toLowerCase(),
             search_data = search.value.toLowerCase();
 
-        row.classList.toggle('hide', table_data.indexOf(search_data) < 0);
-        row.style.setProperty('--delay', i / 25 + 's');
-    })
+        if (table_data.indexOf(search_data) < 0) {
+            row.classList.add('hide'); // Hide rows that don't match
+        } else {
+            row.classList.remove('hide'); // Show rows that match
+            row.style.setProperty('--delay', i / 25 + 's'); // Delay for animation if you have any
+            noResults = false; // At least one result is found
+        }
+    });
 
     document.querySelectorAll('tbody tr:not(.hide)').forEach((visible_row, i) => {
         visible_row.style.backgroundColor = (i % 2 == 0) ? 'transparent' : '#0000000b';
     });
+
+    // Optional: Show message if no results are found
+    if (noResults) {
+        const noResultsMessage = document.createElement('tr');
+        noResultsMessage.innerHTML = `<td colspan="6">No results found</td>`;
+        noResultsMessage.classList.add('no-results');
+        document.querySelector('tbody').appendChild(noResultsMessage);
+    } else {
+        const noResultsRow = document.querySelector('tr.no-results');
+        if (noResultsRow) noResultsRow.remove(); // Remove 'No results found' message if search is successful
+    }
 }
 
 // 2. Sorting | Ordering data of HTML table
