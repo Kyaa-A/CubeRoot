@@ -30,6 +30,7 @@ $notify_count = User::CountNotification($user_id);
   <link rel="stylesheet" href="assets/css/all.min.css">
   <link rel="stylesheet" href="assets/css/home_style.css?v=<?php echo time(); ?>">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
@@ -82,9 +83,9 @@ $notify_count = User::CountNotification($user_id);
 
     <div class="wrapper-left">
       <div class="sidebar-left">
-        <div class="grid-sidebar" style="margin-top: 40px;" >
+        <div class="grid-sidebar" style="margin-top: 40px;">
           <div class="icon-sidebar-align">
-            <img src="<?php echo BASE_URL . "/assets/images/twitter-logo.png"; ?>" alt="" height="50px" width="50px"  />
+            <img src="<?php echo BASE_URL . "/assets/images/twitter-logo.png"; ?>" alt="" height="50px" width="50px" />
           </div>
         </div>
 
@@ -147,7 +148,9 @@ $notify_count = User::CountNotification($user_id);
         <a href="includes/logout.php">
           <div class="grid-sidebar" style="margin-top: 30px;">
             <div class="icon-sidebar-align">
-              <i style="font-size: 26px;" class="fas fa-sign-out-alt"></i>
+              <!-- <i style="font-size: 26px;" class="fas fa-sign-out-alt"></i> -->
+              <img src="<?php echo BASE_URL . "/includes/icons/logout.png"; ?>" alt="" height="26.25px" width="26.25px" />
+
             </div>
 
             <div class="wrapper-left-elements">
@@ -185,7 +188,7 @@ $notify_count = User::CountNotification($user_id);
       </div>
     </div>
 
-<!-- CENTER -->
+    <!-- CENTER -->
     <div class="grid-posts">
       <div class="border-right">
         <div class="grid-toolbar-center">
@@ -203,8 +206,8 @@ $notify_count = User::CountNotification($user_id);
                       </div> -->
                   </div>
 
-                  <div class="text">  
-                    <form class="" action="handle/handleTweet.php" method="post" enctype="multipart/form-data" >
+                  <div class="text">
+                    <form class="" action="handle/handleTweet.php" method="post" enctype="multipart/form-data">
                       <div class="inner">
 
                         <img src="assets/images/users/<?php echo $user->img ?>" alt="profile photo" style="width: 65px; height: 50px">

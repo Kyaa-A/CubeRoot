@@ -29,6 +29,7 @@ if (User::checkLogIn() === false)
   <link rel="stylesheet" href="assets/css/profile_style.css?v=<?php echo time(); ?>">
   <link rel="shortcut icon" type="image/png" href="assets/images/twitter.svg">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -122,7 +123,9 @@ if (User::checkLogIn() === false)
         <a href="includes/logout.php">
           <div class="grid-sidebar" style="margin-top: 30px">
             <div class="icon-sidebar-align">
-              <i style="font-size: 26px;" class="fas fa-sign-out-alt"></i>
+              <!-- <i style="font-size: 26px;" class="fas fa-sign-out-alt"></i> -->
+              <img src="<?php echo BASE_URL . "/includes/icons/logout.png"; ?>" alt="" height="26.25px" width="26.25px" />
+
             </div>
 
             <div class="wrapper-left-elements">
@@ -179,8 +182,8 @@ if (User::checkLogIn() === false)
         <div class="box-home-settings feed">
           <div class="container">
             <div class="nav flex-column nav-pills setting-head" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <a  class="nav-link active text-center" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Change Email or Username</a>
-              <a  class="nav-link text-center" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Change Password</a>
+              <a class="nav-link active text-center" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Change Email or Username</a>
+              <a class="nav-link text-center" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Change Password</a>
 
             </div>
             <div class="tab-content" id="v-pills-tabContent">
@@ -214,7 +217,7 @@ if (User::checkLogIn() === false)
 
                   <div class="text-center">
 
-                    <button type="submit" name="submit" class="btn btn-primary" style="background-color: #8F0A8B;border: 0" >Save Changes</button>
+                    <button type="submit" name="submit" class="btn btn-primary" style="background-color: #8F0A8B;border: 0">Save Changes</button>
                   </div>
 
                 </form>
@@ -267,7 +270,7 @@ if (User::checkLogIn() === false)
 
                   <div class="text-center">
 
-                    <button type="submit" name="submit" class="btn btn-primary" style="background-color: #8F0A8B;border: 0" >Save Changes</button>
+                    <button type="submit" name="submit" class="btn btn-primary" style="background-color: #8F0A8B;border: 0">Save Changes</button>
                   </div>
 
                 </form>

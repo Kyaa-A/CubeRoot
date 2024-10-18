@@ -31,6 +31,8 @@ if (User::checkLogIn() === false)
 
   <link rel="shortcut icon" type="image/png" href="assets/images/twitterlogo.png">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
@@ -106,7 +108,7 @@ if (User::checkLogIn() === false)
         <a href="includes/logout.php">
           <div class="grid-sidebar" style="margin-top: 30px;">
             <div class="icon-sidebar-align">
-              <i style="font-size: 26px;" class="fas fa-sign-out-alt"></i>
+              <img src="<?php echo BASE_URL . "/includes/icons/logout.png"; ?>" alt="" height="26.25px" width="26.25px" />
             </div>
 
             <div class="wrapper-left-elements">

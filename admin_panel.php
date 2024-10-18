@@ -38,6 +38,8 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="shortcut icon" type="image/png" href="assets/images/twitterlogo.png">
 
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
 </head>
 
 <body>
@@ -132,7 +134,9 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <a href="includes/logout.php">
                     <div class="grid-sidebar" style="margin-top: 30px;">
                         <div class="icon-sidebar-align">
-                            <i style="font-size: 26px;" class="fas fa-sign-out-alt"></i>
+                            <!-- <i style="font-size: 26px;" class="fas fa-sign-out-alt"></i> -->
+                            <img src="<?php echo BASE_URL . "/includes/icons/logout.png"; ?>" alt="" height="26.25px" width="26.25px" />
+
                         </div>
 
                         <div class="wrapper-left-elements">
@@ -204,7 +208,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <input type="search" class="search_data" id="searchInput" placeholder="Search Data...">
                                 </div>
                             </section>
-                            <section class="table__body" >
+                            <section class="table__body">
                                 <table>
                                     <thead>
                                         <tr>
@@ -218,7 +222,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     </thead>
                                     <tbody>
                                         <?php foreach ($users as $user): ?>
-                                            <tr data-id="<?= $user['id'] ?>" >
+                                            <tr data-id="<?= $user['id'] ?>">
                                                 <td><?= $user['id']; ?></td>
                                                 <td>
                                                     <img src="assets/images/users/<?= $user['img']; ?>" alt="" style="width: 36px; height: 35px">
@@ -290,7 +294,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <script src="edit.js"></script>
 
 
-    
+
     <!-- Edit User Modal -->
     <div id="editUserModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

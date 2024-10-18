@@ -36,6 +36,7 @@ if (isset($_GET['username']) === true && empty($_GET['username']) === false) {
 
   <link rel="shortcut icon" type="image/png" href="assets/images/twitterlogo.png">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -111,7 +112,9 @@ if (isset($_GET['username']) === true && empty($_GET['username']) === false) {
         <a href="includes/logout.php">
           <div class="grid-sidebar" style="margin-top: 30px;">
             <div class="icon-sidebar-align">
-              <i style="font-size: 26px;" class="fas fa-sign-out-alt"></i>
+              <img src="<?php echo BASE_URL . "/includes/icons/logout.png"; ?>" alt="" height="26.25px" width="26.25px" />
+
+              <!-- <i style="font-size: 26px;" class="fas fa-sign-out-alt"></i> -->
             </div>
 
             <div class="wrapper-left-elements">
@@ -374,13 +377,13 @@ if (isset($_GET['username']) === true && empty($_GET['username']) === false) {
               </li>
             </ul>
 
-            <div class="tab-content" id="myTabContent" >
+            <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
                 <?php include 'includes/tweets.php'; ?>
 
               </div>
-              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" >
+              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <?php
                 $tweets = $media_tweets;
                 include 'includes/tweets.php'; ?>
@@ -401,7 +404,7 @@ if (isset($_GET['username']) === true && empty($_GET['username']) === false) {
       <div class="wrapper-right">
         <div style="width: 90%;" class="container">
 
-          <div class="input-group py-2 m-auto pr-5 position-relative" >
+          <div class="input-group py-2 m-auto pr-5 position-relative">
 
             <i id="icon-search" class="fas fa-search tryy"></i>
             <input type="text" class="form-control search-input" placeholder="Search Twitter">
