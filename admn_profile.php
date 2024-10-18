@@ -419,7 +419,9 @@ if (isset($_GET['username']) === true && empty($_GET['username']) === false) {
           <div class="input-group py-2 m-auto pr-5 position-relative">
 
             <i id="icon-search" class="fas fa-search tryy"></i>
-            <input type="text" class="form-control search-input" placeholder="Search Twitter">
+            <input type="text" id="searchInput" class="form-control search-input" placeholder="Search Twitter">
+
+            <!-- <input type="text" class="form-control search-input" placeholder="Search Twitter"> -->
             <div class="search-result">
 
 
