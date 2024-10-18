@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2024 at 02:22 PM
+-- Generation Time: Oct 18, 2024 at 03:35 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -65,7 +65,6 @@ CREATE TABLE `follow` (
 INSERT INTO `follow` (`id`, `follower_id`, `following_id`, `time`) VALUES
 (15, 40, 2, '2021-04-19 18:30:06'),
 (16, 33, 2, '2021-04-19 18:30:56'),
-(41, 37, 2, '2021-04-20 20:19:49'),
 (43, 5, 2, '2021-04-20 20:20:32'),
 (44, 27, 2, '2021-04-20 20:21:18'),
 (45, 34, 2, '2021-04-20 20:22:07'),
@@ -97,7 +96,6 @@ INSERT INTO `follow` (`id`, `follower_id`, `following_id`, `time`) VALUES
 (174, 27, 40, '2022-01-13 09:06:00'),
 (175, 33, 40, '2022-01-13 09:06:32'),
 (176, 34, 40, '2022-01-13 09:06:56'),
-(177, 37, 40, '2022-01-13 09:07:10'),
 (178, 42, 40, '2022-01-13 09:08:27'),
 (179, 43, 40, '2022-01-13 09:08:38'),
 (180, 60, 2, '2022-01-13 09:17:44'),
@@ -117,7 +115,9 @@ INSERT INTO `follow` (`id`, `follower_id`, `following_id`, `time`) VALUES
 (209, 62, 61, '2024-10-02 11:01:17'),
 (215, 61, 33, '2024-10-02 11:16:03'),
 (217, 61, 41, '2024-10-02 11:16:21'),
-(218, 1, 2, '2024-10-04 16:54:24');
+(218, 1, 2, '2024-10-04 16:54:24'),
+(219, 65, 2, '2024-10-18 02:09:30'),
+(220, 65, 61, '2024-10-18 02:10:14');
 
 -- --------------------------------------------------------
 
@@ -151,7 +151,6 @@ INSERT INTO `likes` (`id`, `user_id`, `post_id`) VALUES
 (262, 33, 711),
 (263, 34, 727),
 (264, 34, 711),
-(265, 37, 727),
 (266, 40, 727),
 (268, 40, 573),
 (269, 40, 362),
@@ -177,13 +176,13 @@ INSERT INTO `likes` (`id`, `user_id`, `post_id`) VALUES
 (297, 27, 730),
 (298, 33, 730),
 (299, 34, 730),
-(300, 37, 730),
 (301, 42, 730),
 (302, 43, 730),
 (312, 60, 711),
 (313, 60, 574),
 (322, 62, 654),
-(323, 61, 574);
+(325, 65, 740),
+(329, 61, 750);
 
 -- --------------------------------------------------------
 
@@ -241,7 +240,6 @@ INSERT INTO `notifications` (`id`, `notify_for`, `notify_from`, `target`, `type`
 (142, 25, 33, 711, 'like', '2022-01-12 17:55:41', 0, 0),
 (143, 25, 34, 727, 'like', '2022-01-12 17:55:55', 0, 0),
 (144, 25, 34, 711, 'like', '2022-01-12 17:55:58', 0, 0),
-(145, 25, 37, 727, 'like', '2022-01-12 17:56:18', 0, 0),
 (146, 25, 40, 727, 'like', '2022-01-12 17:56:31', 0, 0),
 (148, 2, 40, 573, 'like', '2022-01-12 17:56:42', 0, 0),
 (149, 2, 40, 362, 'like', '2022-01-12 17:56:44', 0, 0),
@@ -277,8 +275,6 @@ INSERT INTO `notifications` (`id`, `notify_for`, `notify_from`, `target`, `type`
 (192, 40, 33, 730, 'like', '2022-01-13 09:06:33', 0, 0),
 (193, 40, 34, 0, 'follow', '2022-01-13 09:06:56', 0, 0),
 (194, 40, 34, 730, 'like', '2022-01-13 09:06:57', 0, 0),
-(195, 40, 37, 0, 'follow', '2022-01-13 09:07:10', 0, 0),
-(196, 40, 37, 730, 'like', '2022-01-13 09:07:12', 0, 0),
 (197, 40, 42, 0, 'follow', '2022-01-13 09:08:27', 0, 0),
 (198, 40, 42, 730, 'like', '2022-01-13 09:08:28', 0, 0),
 (199, 40, 43, 0, 'follow', '2022-01-13 09:08:38', 0, 0),
@@ -299,14 +295,18 @@ INSERT INTO `notifications` (`id`, `notify_for`, `notify_from`, `target`, `type`
 (246, 56, 61, 0, 'follow', '2024-09-28 13:06:57', 0, 0),
 (250, 2, 62, 0, 'follow', '2024-09-29 10:20:29', 0, 0),
 (251, 2, 62, 654, 'like', '2024-09-29 11:15:51', 0, 0),
-(254, 2, 61, 574, 'like', '2024-09-30 08:48:02', 0, 0),
 (256, 2, 61, 574, 'comment', '2024-10-01 11:22:20', 0, 0),
 (257, 40, 61, 0, 'follow', '2024-10-01 11:31:00', 0, 0),
 (258, 62, 61, 0, 'follow', '2024-10-01 12:01:52', 1, 0),
 (260, 61, 62, 0, 'follow', '2024-10-02 11:01:17', 1, 0),
 (266, 33, 61, 0, 'follow', '2024-10-02 11:16:03', 0, 0),
 (268, 41, 61, 0, 'follow', '2024-10-02 11:16:21', 0, 0),
-(269, 2, 1, 0, 'follow', '2024-10-04 16:54:24', 0, 0);
+(269, 2, 1, 0, 'follow', '2024-10-04 16:54:24', 0, 0),
+(270, 2, 65, 0, 'follow', '2024-10-18 02:09:30', 0, 0),
+(271, 61, 65, 0, 'follow', '2024-10-18 02:10:14', 1, 0),
+(272, 61, 65, 740, 'like', '2024-10-18 02:10:17', 1, 0),
+(273, 61, 65, 740, 'retweet', '2024-10-18 02:10:19', 1, 0),
+(275, 62, 61, 750, 'like', '2024-10-18 04:31:35', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -343,7 +343,9 @@ INSERT INTO `posts` (`id`, `user_id`, `post_on`) VALUES
 (750, 62, '2024-10-01 12:02:28'),
 (751, 61, '2024-10-01 12:10:14'),
 (752, 62, '2024-10-01 12:23:31'),
-(753, 61, '2024-10-02 11:10:56');
+(753, 61, '2024-10-02 11:10:56'),
+(754, 65, '2024-10-18 02:10:19'),
+(755, 61, '2024-10-18 04:30:19');
 
 -- --------------------------------------------------------
 
@@ -384,7 +386,8 @@ CREATE TABLE `retweets` (
 --
 
 INSERT INTO `retweets` (`post_id`, `retweet_msg`, `tweet_id`, `retweet_id`) VALUES
-(711, '10/10', 654, NULL);
+(711, '10/10', 654, NULL),
+(754, NULL, 740, NULL);
 
 -- --------------------------------------------------------
 
@@ -447,7 +450,8 @@ INSERT INTO `tweets` (`post_id`, `status`, `img`) VALUES
 (750, 'Tomorrow will have an event! See you!', NULL),
 (751, 'Im a cat', NULL),
 (752, 'test', NULL),
-(753, 'Hello There im a cat', NULL);
+(753, 'Hello There im a cat', NULL),
+(755, 'I love this wallpaper', 'tweet-6711ba2b4875b.jpg');
 
 -- --------------------------------------------------------
 
@@ -475,14 +479,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `name`, `img`, `imgCover`, `bio`, `location`, `website`, `role`, `status`) VALUES
-(1, 'kyaa', 'kyaamystera@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Kyaa', 'default.jpg', 'cover.png', '', '', '', 1, 1),
+(1, 'Kyaa', 'kyaamystera@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Kyaa', 'default.jpg', 'cover.png', '', '', '', 1, 1),
 (2, 'codeastro', 'astro@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Astro', 'user-61def28fce0d7.jpg', 'cover.png', 'Well, nothing...', 'South Dakota', 'https://codeastro.com/', 1, 1),
 (5, 'matholiver', 'oliver@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Matthew Oliver', 'user-61dee95ac1f87.jpg', 'cover.png', 'I make money in my sleep', '', '', 1, 0),
 (25, 'itselisagrnt', 'elisag@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Elisa Grant', 'user-61deea3b7c7b3.jpg', 'cover.png', 'Midnight snacker', '', '', 1, 0),
 (27, 'viodaw', 'dawson@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Viola Dawson', 'default.jpg', 'cover.png', 'Recovering cake addict', '', '', 1, 1),
 (33, 'floreshe', 'sherflore@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Sherman Flores', 'default.jpg', 'cover.png', 'Smart. Strong. Silly. ', '', '', 1, 1),
 (34, 'darlyperez', 'daryl@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Daryl Perez', 'user-61deea7887174.png', 'cover.png', 'Donï¿½t like me? Donï¿½t care.', '', '', 1, 1),
-(37, 'edwhitney', 'whed@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Whitney Edwards', 'default.jpg', 'cover.png', 'thank you, come again.', '', '', 1, 1),
 (40, 'wilburpotter', 'potterw@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Wilbur Potter', 'user-61deeaa4a6178.jpg', 'cover.png', 'Having the time of my life', '', '', 1, 1),
 (41, 'miwalters', 'micwalters@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Michelle Walters', 'user-61dee97f31d06.png', 'cover.png', 'Status Update: Currently hungry', '', '', 1, 1),
 (42, 'osborne', 'aosborne@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Andy Osborne', 'default.jpg', 'user-609be2968c0b9.png', 'Don’t kale my vibe', '', '', 1, 1),
@@ -493,8 +496,9 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `name`, `img`, `imgC
 (56, 'gregg58', 'gregcarr@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Greg Carr', 'user-61dee9a0f415d.png', 'cover.png', 'I apologize for anything I post while hungry', '', '', 1, 1),
 (57, 'johnst', 'john@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'John Stuart', 'default.jpg', 'cover.png', 'Not like the rest of them', '', '', 1, 1),
 (60, 'marctaylor', 'marc@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', 'Marc Taylor', 'user-61dfd28bd6e79.png', 'cover.png', 'Coffee in one hand, confidence in another.', 'Lake Isaiah', '', 1, 1),
-(61, 'Asnari', 'asnaripacalna@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Asnari Pacalna', 'user-66fbb33cccd6e.jpg', 'user-66f80a23be4c1.jpg', '', '', 'https://github.com/Kyaa-A', 1, 1),
-(62, 'admin', 'admin@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Admin', 'user-66fbbb8b918fa.jpg', 'user-66fbbc5c6453f.png', '', '', '', 2, 1);
+(61, 'Asnari', 'asnaripacalna@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Asnari Pacalna', 'user-671198f5752c7.jpg', 'user-6711ba9276a93.jpg', '', '', 'https://github.com/Kyaa-A', 1, 1),
+(62, 'Admin', 'admin@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Admin', 'user-66fbbb8b918fa.jpg', 'user-66fbbc5c6453f.png', '', '', '', 2, 1),
+(65, 'Bajig', 'bajig@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'Bajig', 'user-6711994a89515.jpg', 'user-6711994a8951c.jpg', '', '', '', 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -588,25 +592,25 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `follow`
 --
 ALTER TABLE `follow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=219;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=222;
 
 --
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=325;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=330;
 
 --
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=270;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=276;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=754;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=756;
 
 --
 -- AUTO_INCREMENT for table `replies`
@@ -624,7 +628,7 @@ ALTER TABLE `trends`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- Constraints for dumped tables
