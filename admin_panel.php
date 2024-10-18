@@ -39,7 +39,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+
 </head>
 
 <body>
@@ -204,8 +204,11 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <main class="table" id="customers_table">
                             <section class="table__header">
                                 <h2>User's Data</h2>
-                                <div class="input-group">
+                                <!-- <div class="input-group">
                                     <input type="search" class="search_data" id="searchInput" placeholder="Search Data...">
+                                </div> -->
+                                <div class="input-group">
+                                    <input type="search" class="search_data" id="adminSearchInput" placeholder="Search Data...">
                                 </div>
                             </section>
                             <section class="table__body">

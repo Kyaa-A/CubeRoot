@@ -296,7 +296,9 @@ $notify_count = User::CountNotification($user_id);
           <div class="input-group py-2 m-auto pr-5 position-relative">
 
             <i id="icon-search" class="fas fa-search tryy"></i>
-            <input type="text" class="form-control search-input" placeholder="Search Twitter">
+            <!-- <input type="text" class="form-control search-input" placeholder="Search Twitter"> -->
+            <input type="text" id="searchInput" class="form-control search-input" placeholder="Search Twitter">
+
             <div class="search-result">
 
 
@@ -359,6 +361,7 @@ $notify_count = User::CountNotification($user_id);
       </div>
     </div>
   </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="assets/js/search.js"></script>
   <script src="assets/js/photo.js?v=<?php echo time(); ?>"></script>
   <script type="text/javascript" src="assets/js/hashtag.js"></script>
