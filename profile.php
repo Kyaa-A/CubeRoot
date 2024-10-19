@@ -449,6 +449,7 @@ if (isset($_GET['username']) === true && empty($_GET['username']) === false) {
               <div>
                 <button class="follow-btn follow-btn-m 
                       <?= $user_follow ? 'following' : 'follow' ?>"
+                     
                   data-follow="<?php echo $user->id; ?>"
                   data-user="<?php echo $user_id; ?>"
                   data-profile="<?php echo $profileData->id; ?>"

@@ -12,7 +12,7 @@
   <html>
 
   <head>
-    <title>CubeRoot</title>
+    <title>CubeLink</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" />
     <!-- <link rel="stylesheet" href="assets/css/style-complete.css"/> -->
@@ -31,7 +31,7 @@
           <img class="login-bird" src="<?php echo BASE_URL . "/assets/images/twitterlogo.png"; ?>" alt="bird">
           <button class="login-small-display signin-btn pri-btn">Log in</button>
           <span class="front-para">Unlock Connections at Every Angle</span>
-          <span class="join">Join CubeRoot Today</span>
+          <span class="join">Join CubeLink Today</span>
           <button type="button" id="auto" onclick="" class="signup-btn pri-btn" data-toggle="modal" data-target="#exampleModalCenter">
             Sign Up</button>
 

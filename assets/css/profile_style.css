@@ -551,17 +551,18 @@ a:hover {
 }
 .follow:hover {
   transition: 0.5s;
-  background-color: rgb(194, 223, 248);
+  background-color: #8F0A8B;
+  color: white;
 }
 .following {
   transition: 0.5s;
-  background-color: #2290d4;
+  background-color: #8F0A8B;
   color: white;
 }
 
 .following:hover {
   transition: 0.5s;
-  background-color: #ca2055;
+  background-color: #8F0A8B;
   color: white;
 }
 button:focus {
